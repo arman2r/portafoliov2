@@ -1,18 +1,26 @@
-<div class="grid lg:grid-cols-3 gap-4 w-full">
-  <div class="flex flex-col text-start justify-center items-start">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+  <div
+    class="col-span-1 flex flex-col text-center sm:text-start justify-center order-1 items-center sm:items-start"
+  >
     <h5 class="text-xl font-medium tracking-wide">Info. de contácto</h5>
-    <ul class="text-md my-4 gap-2 flex flex-col">
+    <ul class="text-md my-4 gap-2 flex flex-col items-center sm:items-start">
       <li class="flex items-center gap-4">
-        <mat-icon>mail</mat-icon>
+        <span class="hidden sm:inline-block">
+          <mat-icon>mail</mat-icon>
+        </span>
         <a href="mailto:arman.2.r@gmail.com"> {{ 'arman.2.r@gmail.com' }} </a>
       </li>
       <li class="flex items-center gap-4">
-        <mat-icon>smartphone</mat-icon>
+        <span class="hidden sm:inline-block">
+          <mat-icon>smartphone</mat-icon>
+        </span>
         <a href="tel: 315 544 3749">315 544 3749</a>
       </li>
     </ul>
   </div>
-  <div class="flex gap-4 justify-center items-center">
+  <div
+    class="col-span-full md:col-span-2 lg:col-span-1 flex gap-4 justify-center items-center order-3 lg:order-2"
+  >
     <button mat-icon-button>
       <img src="../../../assets/linkedin.png" alt="linkedin" class="w-8 h-8" />
     </button>
@@ -20,20 +28,30 @@
       <img src="../../../assets/github.png" alt="linkedin" class="w-8 h-8" />
     </button>
   </div>
-  <div class="flex flex-col text-end justify-center items-end">
+  <div
+    class="col-span-1 flex flex-col text-center sm:text-end justify-center items-center sm:items-end order-2 lg:order-3"
+  >
     <h5 class="text-xl font-medium tracking-wide">Ubicación</h5>
     <ul class="text-md my-4 gap-2 flex flex-col">
-      <li class="flex items-center gap-4 justify-end">
+      <li
+        class="flex items-center flex-row-reverse sm:flex-row gap-4 justify-center sm:justify-end"
+      >
         <a href="mailto:arman.2.r@gmail.com"> Ibagué/Tolima </a>
-        <mat-icon>location_on</mat-icon>
+        <span class="hidden sm:inline-block">
+          <mat-icon>location_on</mat-icon>
+        </span>
       </li>
-      <li class="flex items-center justify-end gap-4">
+      <li
+        class="flex items-center flex-row-reverse sm:flex-row justify-center sm:justify-end gap-4"
+      >
         <a href="tel: 315 544 3749">Colombia</a>
-        <mat-icon>public</mat-icon>
+        <span class="hidden sm:inline-block">
+          <mat-icon>public</mat-icon>
+        </span>
       </li>
     </ul>
   </div>
-  <div class="col-span-3 text-center text-xs">
+  <div class="col-span-full text-center text-xs order-4 pb-20 sm:pb-0 pt-5">
     &copy; AJR 2025 - Todos los derechos reservados
   </div>
 </div>

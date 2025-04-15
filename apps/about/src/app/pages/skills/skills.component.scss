@@ -8,6 +8,10 @@
       bottom: -14px !important;
       left: 7px;
       position: absolute;
+      @media(max-width: 768px) {
+        bottom: -55px !important;
+        left: -15px;
+      }
     }
   }
 
@@ -224,6 +228,10 @@
         bottom: -14px !important;
         right: 7px;
         position: absolute;
+        @media(max-width: 768px) {
+          bottom: -55px !important;
+          right: -15px;
+        }
       }
     }
   }

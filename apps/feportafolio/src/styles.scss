@@ -1,5 +1,6 @@
 @use '@angular/material'as mat;
-@use '../../../../portafolio/shared-styles/src/lib/_theme_color'as theme;
+//@use '../../../../portafolio/shared-styles/src/lib/_theme_color'as theme;
+@use 'theme_color'as theme;
 
 @include mat.core();
 //@include mat.all-component-themes(theme.$dark-theme);
@@ -111,6 +112,7 @@ sub {
         scroll-snap-type: both mandatory;
         scroll-padding: 15px 15px 15px 15px;
         justify-content: start;
+        z-index: 3;
 
         @media (min-width: 1024px) {
             align-items: center;
@@ -162,10 +164,15 @@ sub {
     &.footer {
         transition: all ease-in-out 0.3s;
         width: 100% !important;
-        margin-left: 100px;
+
         min-height: fit-content !important;
         max-height: fit-content !important;
         padding: 40px 20px;
+        box-sizing: border-box;
+
+        @media(min-width: 640px) {
+            margin-left: 100px;
+        }
     }
 }
 
@@ -174,7 +181,7 @@ sub {
     .section {
         width: calc(100% - 51px);
         margin-left: 106px;
-    } 
+    }
 
     @media(max-width: 1120px) {
         .section {
@@ -183,17 +190,23 @@ sub {
         }
     }
 
-    @media(max-width: 1024px) {        
+    @media(max-width: 1024px) {
         .section {
             width: calc(100% - 63px);
             margin-left: 90px;
+            &.footer {
+                margin-left: 20px;
+            }
         }
     }
 
-    @media(max-width: 639px) {        
+    @media(max-width: 639px) {
         .section {
             width: 100%;
             margin-left: 0px;
+            &.footer {
+                margin-left: 0px;
+            }
         }
     }
 

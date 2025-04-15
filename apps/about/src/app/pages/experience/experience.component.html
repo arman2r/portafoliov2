@@ -1,30 +1,30 @@
-<div class="flex flex-col w-full px-[5rem] pb-[5rem]">
-  <div class="flex flex-col items-start my-8 pt-10">
-    <h3 class="text-6xl">Experiencia laboral:</h3>
+<div class="flex flex-col w-full px-8 md:px-[5rem] p-8 md:pb-[5rem]">
+  <div class="flex flex-col items-start text-center md:text-start mt-10 mb-0 md:my-8 pt-10">
+    <h3 class="text-4xl md:text-6xl">Experiencia laboral:</h3>
     <sub class="text-2xl">Mi recorrido en 11 años de trabajo</sub>
   </div>
 </div>
 
-<div class="w-full flex flex-row justify-center items-center relative mb-30">
+<div class="w-full flex flex-row justify-center items-center relative mb-32">
   <div class="w-full absolute top-20 h-[1px] z-0">
     <mat-divider></mat-divider>
   </div>
   <button
     mat-fab
-    class="-me-20 md:ms-[-30px] md:me-[-30px] z-10 relative"
+    class="-me-20 md:ms-[-30px] md:me-[-30px] z-10 -mt-16 md:mt-0 relative"
     (click)="leftItem(); readMore(null)"
   >
     <mat-icon>chevron_left</mat-icon>
   </button>
-  <div class="flex flex-col w-full px-[5rem]">
+  <div class="flex flex-col w-full md:px-[5rem]">
     <div
       #patternElementScroll
       class="w-full flex whitespace-nowrap overflow-auto pattern-scroller"
     >
       @for (experience of experiences(); track $index;) {
       <div
-        class="min-w-[280px] justify-start items-center relative z-5"
-        [ngClass]="$index === experiences().length - 1 ? 'me-0' : 'me-2'"
+        class="min-w-full md:min-w-[280px] justify-start items-center relative z-5 item-carr"
+        [ngClass]="$index === experiences().length - 1 ? 'me-0' : 'me-0 md:me-2'"
       >
         <div class="flex flex-col w-full items-center justify-center">
           <h5>{{ experience.empresa }}</h5>
@@ -38,8 +38,8 @@
           >
             <h4>{{ experience.inicio }}</h4>
           </button>
-          <h5>{{ experience.puesto }}</h5>
-          <div class="flex items-start w-full whitespace-pre-line p-4">
+          <h5 class="mt-5 md:mt-0">{{ experience.puesto }}</h5>
+          <div class="flex items-center text-center md:text-start md:items-start w-full whitespace-pre-line p-4">
             {{
               readMoreTxt() !== null
                 ? readMoreTxt() === $index
@@ -57,7 +57,7 @@
   <button
     (click)="nextItem(); readMore(null)"
     mat-fab
-    class="-ms-14 md:ms-[-30px] md:me-[-30px] z-10 relative"
+    class="-ms-14 -mt-16 md:mt-0 md:ms-[-30px] md:me-[-30px] z-10 relative"
   >
     <mat-icon>chevron_right</mat-icon>
   </button>

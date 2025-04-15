@@ -11,8 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ToggleSidenavBtnComponent {
   @Output() toggleSidenavEvent: EventEmitter<boolean> = new EventEmitter(true);
+  isCloseMenu = false;
 
   toggleSidenav() {
     this.toggleSidenavEvent.emit(!this.toggleSidenavEvent);
+    setTimeout(() => {
+      this.isCloseMenu = !this.isCloseMenu;
+    }, 400)    
   }
 }

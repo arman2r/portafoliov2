@@ -24,24 +24,30 @@ export class ExperienceComponent {
   }
 
   readMore(index: number | null) {
-    if(index === this.readMoreTxt()) {
+    if (index === this.readMoreTxt()) {
       this.readMoreTxt.set(null); // Si ya está abierto, cerrarlo
     } else {
       this.readMoreTxt.set(index); // Abrir el nuevo elemento
     }
-    
+
   }
 
   nextItem() {
     //console.log(this.patternElement()?.nativeElement);
     const element = this.patternElement()?.nativeElement;
-    element.scrollBy({ left: 250, behavior: 'smooth' });
+    if (!element) return;
+    console.log('element', element);
+    const scrollAmount = window.innerWidth < 768 ? window.innerWidth : 280;
+    element.scrollBy({ left: scrollAmount + 10, behavior: 'smooth' });
   }
 
   leftItem() {
     //console.log(this.patternElement()?.nativeElement);
     const element = this.patternElement()?.nativeElement;
-    element.scrollBy({ left: -250, behavior: 'smooth' });
+    if (!element) return;
+
+    const scrollAmount = window.innerWidth < 768 ? window.innerWidth : 280;
+    element.scrollBy({ left: -scrollAmount - 10, behavior: 'smooth' });
   }
- 
+
 }

@@ -1,16 +1,33 @@
-<mat-drawer-container #drawerContainer class="example-container" autosize>
+<mat-drawer-container
+  #drawerContainer
+  class="example-container"
+  autosize
+  (close)="drawer.close()"
+  (backdropClick)="drawer.close()"
+>
   <div
     class="flex flex-row w-full sm:w-[85%] md:w-[88%] 2xl:w-[1200px] relative lg:max-h-[100%] items-stretch"
   >
-    <mat-drawer #drawer class="example-sidenav" [mode]="!isMobile() ? 'side' : 'over'" [opened]="!isMobile()">
+    <mat-drawer
+      #drawer
+      class="example-sidenav"
+      [mode]="isMobile() ? 'over' : 'side'"
+      [opened]="!isMobile()"
+    >
       <!--<app-menu></app-menu>-->
       <ng-container #menuPlaceHolder></ng-container>
     </mat-drawer>
     <div
       class="flex flex-row w-full h-20 sm:w-auto sm:h-full items-stretch fixed sm:relative ctrls-left"
-      [ngClass]="!drawer?.opened ? 'left-0 xl:left-[-13px]' : 'left-0 sm:left-[138px]'"
+      [ngClass]="
+        !drawer?.opened
+          ? 'left-0 xl:left-[-13px]'
+          : 'left-0 sm:left-[145px] xl:left-[138px]'
+      "
     >
-      <div class="flex flex-wrap w-full sm:w-auto h-20 sm:h-full z-10 fixed top-0">
+      <div
+        class="flex flex-wrap w-full sm:w-auto h-20 sm:h-full z-10 fixed top-0"
+      >
         <div
           class="flex flex-row w-full sm:w-auto sm:flex-col justify-between p-4 xl:pe-6 gap-4 lg:ms-4 items-center sm:h-full"
         >
@@ -21,28 +38,44 @@
         </div>
 
         <div class="flex flex-row w-full sm:w-auto sm:h-full">
-          <mat-divider [vertical]="!isMobile() && true" class="w-full sm:w-auto"></mat-divider>
+          <mat-divider
+            [vertical]="!isMobile() && true"
+            class="w-full sm:w-auto"
+          ></mat-divider>
         </div>
       </div>
     </div>
     <div class="example-sidenav-content" [class.close-sidenav]="!drawer.opened">
-      <router-outlet />      
+      <router-outlet />
       <div class="section footer relative" id="footer">
         <mat-divider class="w-full footer-divider"></mat-divider>
-        <app-footer 
+        <!--<app-footer 
           [ngClass]="
             drawer.opened
-              ? 'lg:w-[calc(100%-300px)] ms-[150px]'
-              : 'lg:w-full ms-[0] px-20'
+              ? 'lg:w-[calc(100% - 200px)] 2xl:w-[calc(100%-300px)] 2xl:ms-[150px]'
+              : '2xl:w-full ms-[0] px-20'
           "
+        ></app-footer>-->
+        <app-footer
+          [class.drawer-closed]="!drawer.opened"
+          class="footer-container"
         ></app-footer>
       </div>
     </div>
 
-    <div class="flex flex-row w-full sm:w-auto h-20 sm:h-full fixed bottom-0 sm:relative">
-      <div class="flex flex-wrap w-full sm:w-auto sm:h-full fixed bottom-0 sm:top-0 column-right right-0 xl:right-auto">
-        <mat-divider [vertical]="!isMobile() && true" class="w-full sm:w-auto"></mat-divider>
-        <div class="flex flex-row w-full sm:w-auto sm:flex-col p-4 sm:pe-6 gap-4 2xl:ms-4 justify-between">
+    <div
+      class="flex flex-row w-full sm:w-auto h-20 sm:h-full fixed bottom-0 sm:relative z-10"
+    >
+      <div
+        class="flex flex-wrap w-full sm:w-auto sm:h-full fixed bottom-0 sm:top-0 column-right right-0 xl:right-auto"
+      >
+        <mat-divider
+          [vertical]="!isMobile() && true"
+          class="w-full sm:w-auto"
+        ></mat-divider>
+        <div
+          class="flex flex-row w-full sm:w-auto sm:flex-col p-4 sm:pe-6 gap-4 2xl:ms-4 justify-between"
+        >
           <app-shared-btn></app-shared-btn>
           <button mat-fab class="outline-button">
             <mat-icon>download</mat-icon>

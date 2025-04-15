@@ -1,7 +1,7 @@
-import { Component, inject, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, effect, inject, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { filter } from 'rxjs';
 import { Meta, Title } from '@angular/platform-browser';
@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
   likeHover = false;
   @ViewChild('menuPlaceHolder', { read: ViewContainerRef })
   menuViewContainer!: ViewContainerRef;
+  @ViewChild('drawer') drawer!: MatDrawer;
+
 
   protected readonly isMobile = signal(true);
 
@@ -47,8 +49,10 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private meta: Meta) {
     const media = inject(MediaMatcher);
 
-    this._mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQuery = media.matchMedia('(max-width: 639px)');
+    console.log(this._mobileQuery)
     this.isMobile.set(this._mobileQuery.matches);
+    console.log(this.isMobile);
     this._mobileQueryListener = () => this.isMobile.set(this._mobileQuery.matches);
     this._mobileQuery.addEventListener('change', this._mobileQueryListener);
   }
@@ -77,6 +81,17 @@ export class AppComponent implements OnInit {
           }
         }
       });
+  }
+
+  ngAfterViewInit() {
+    // reactivo al cambio de resolución
+    effect(() => {
+      if (this.isMobile()) {
+        this.drawer?.close();
+      } else {
+        this.drawer?.open();
+      }
+    });
   }
 
   async loadRemotes(): Promise<void> {

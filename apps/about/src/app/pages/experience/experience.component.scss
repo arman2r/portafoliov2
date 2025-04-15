@@ -25,3 +25,9 @@
         border-radius: 20px !important;
     }
 }
+
+.item-carr{
+    @media (max-width: 640px) {
+        margin-left: 10px !important;
+    }
+}

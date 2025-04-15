@@ -16,6 +16,9 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/feportafolio/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "stylePreprocessorOptions": {
+          "includePaths": ["shared-styles/src/lib"]
+        },
         "assets": [
           {
             "glob": "**/*",
@@ -28,7 +31,10 @@
             "output": "assets"
           }
         ],
-        "styles": ["shared-styles/src/lib/tokens.scss", "apps/feportafolio/src/styles.scss"],
+        "styles": [
+          "shared-styles/src/lib/tokens.scss",
+          "apps/feportafolio/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/feportafolio/webpack.config.ts"
