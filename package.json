@@ -2,7 +2,10 @@
   "name": "@portafolio/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "serve:ssr": "nx serve feportafolio --devRemotes='about,sidenavmenu,admin'",
+    "build:ssr": "nx run-many --target=build --projects=feportafolio,about,sidenavmenu,admin && nx run feportafolio:server"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.2.0",
