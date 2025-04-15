@@ -1,0 +1,208 @@
+@use '@angular/material'as mat;
+@use '../../../../portafolio/shared-styles/src/lib/_theme_color'as theme;
+
+@include mat.core();
+//@include mat.all-component-themes(theme.$dark-theme);
+//@use '@angular/material/prebuilt-themes/magenta-violet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* You can add global styles to this file, and also import other style files */
+
+
+.mat-mdc-notch-piece.mdc-notched-outline__notch {
+    border-right: 0px !important;
+}
+
+/*
+// Configuración de tipografía y densidad compartida
+$typography-config: (plain-family: Roboto,
+    brand-family: 'Open Sans',
+    bold-weight: 900,
+    medium-weight: 500,
+    regular-weight: 300,
+);
+
+$density-config: (scale: -2);
+
+// Tema oscuro predeterminado
+$dark-theme: mat.define-theme((color: (primary: mat.$violet-palette,
+            tertiary: mat.$magenta-palette,
+            theme-type: dark,
+        ),
+        typography: $typography-config,
+        density: $density-config,
+    ));
+
+// Tema claro como alternativo
+$light-theme: mat.define-theme((color: (primary: mat.$violet-palette,
+            tertiary: mat.$magenta-palette,
+            theme-type: light,
+        ),
+        typography: $typography-config,
+        density: $density-config,
+    ));
+
+
+
+:host {
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+}
+*/
+
+html {
+    @include mat.theme((color: (theme-type: light,
+                primary: theme.$primary-palette,
+                tertiary: theme.$tertiary-palette,
+            ),
+            typography: Roboto,
+            density: 0,
+        ));
+}
+
+/*body.dark-mode {
+    color-scheme: dark;
+    --mat-sys-background: #151316;
+    --mat-sys-on-background: #e9e0e4;
+
+    //@include mat.all-component-themes($dark-theme);
+    //@include mat.color-variants-backwards-compatibility($dark-theme);
+}*/
+
+/*body.light-mode {
+    color-scheme: light;
+      --mat-sys-background: #fcf8fa;
+    --mat-sys-on-background: #151316;
+
+    //@include mat.all-component-themes($light-theme);
+    //@include mat.color-variants-backwards-compatibility($light-theme);
+}*/
+
+html,
+body {
+    height: 100%;
+    scroll-behavior: smooth;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+}
+
+sub {
+    bottom: 0px;
+}
+
+
+.outline-button {
+    background-color: var(--mat-sys-on-secondary-fixed) !important;
+    color: var(--mat-sys-on-surface) !important;
+    border: 1px solid var(--mat-sys-outline) !important;
+}
+
+.example-container {
+    mat-drawer-content {
+        width: 100%;
+        display: flex;
+        margin-left: 0px !important;
+        scroll-snap-type: both mandatory;
+        scroll-padding: 15px 15px 15px 15px;
+        justify-content: start;
+
+        @media (min-width: 1024px) {
+            align-items: center;
+        }
+
+        @media(min-width: 1280px) {
+            justify-content: center;
+            padding: 30px 30px 30px 30px;
+        }
+    }
+}
+
+.section {
+    scroll-snap-align: start;
+    padding: 0 0px;
+    width: calc(100% - 240px);
+    margin-left: 252px;
+    max-width: 100%;
+
+    @media (min-width: 1536px) {
+        max-width: 1100px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 11.5rem);
+    //max-height: 80%;
+    transition: all ease-in-out 0.3s;
+    /* Increased transition duration for smoother effect */
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+
+    @media(max-width: 1280px) {
+        width: calc(100% - 188px);
+        margin-left: 243px;
+    }
+
+    @media(max-width: 1024px) {
+        width: calc(100% - 188px);
+        margin-left: 228px;
+    }
+
+    @media(max-width: 639px) {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    &.footer {
+        transition: all ease-in-out 0.3s;
+        width: 100% !important;
+        margin-left: 100px;
+        min-height: fit-content !important;
+        max-height: fit-content !important;
+        padding: 40px 20px;
+    }
+}
+
+.close-sidenav {
+
+    .section {
+        width: calc(100% - 51px);
+        margin-left: 106px;
+    } 
+
+    @media(max-width: 1120px) {
+        .section {
+            width: calc(100% - 70px);
+            margin-left: 105px;
+        }
+    }
+
+    @media(max-width: 1024px) {        
+        .section {
+            width: calc(100% - 63px);
+            margin-left: 90px;
+        }
+    }
+
+    @media(max-width: 639px) {        
+        .section {
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+
+    @media(min-width: 1280px) {
+        .section {
+            width: 92%;
+            margin-left: 100px;
+        }
+    }
+
+
+}

@@ -1,0 +1,27 @@
+.pattern-scroller {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.btn-step {
+    background-color: var(--mat-sys-secondary-container) !important;
+    color: var(--color-primary-contrast) !important;
+    border: 1px solid var(--mat-sys-outline) !important;
+    border-radius: 100px !important;
+    width: 80px !important;
+    height: 80px !important;
+    transition: all ease-in-out .3s;
+
+    &:hover {
+        border-radius: 20px !important;
+    }
+
+    h4 {
+        font-size: 1.2rem !important;
+    }
+
+    &.active-step {
+        border-radius: 20px !important;
+    }
+}

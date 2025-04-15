@@ -1,0 +1,274 @@
+.skill-item.visible {
+  .border-line {
+    border: 1px solid var(--mat-sys-outline);
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    animation: fadeline-in 0.5s ease-in-out forwards;
+    .years-text {
+      bottom: -14px !important;
+      left: 7px;
+      position: absolute;
+    }
+  }
+
+  @keyframes fadeline-in {
+    from {
+      transform: scaleX(0);
+    }
+
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .image-border {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px;
+    min-height: 80px;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-radius: 8px;
+    }
+
+    &::after {
+      right: 0;
+      //border: 1px solid var(--mat-sys-outline);
+      animation: make-in-box-r 0.5s ease-in-out forwards;
+      transform-origin: 100% 50%;
+      animation-delay: 0.4s;
+    }
+
+    .image-sprite {
+      width: 80%;
+      height: 80%;
+      position: relative;
+      background-image: url('/assets/css_sprites.webp');
+      background-repeat: repeat-x;
+      background-size: auto 70px;
+      transition: all 0.5s ease-in-out;
+      background-color: var(--mat-sys-outline);
+      border-radius: 8px;
+
+      @for $i from 0 through 14 {
+        &.sprite-#{$i} {
+          background-position: calc((62px + 10px) * $i) 50%;
+        }
+      }
+
+      $technologies: (
+        'angular': -2.5px,
+        'material': -72.5px,
+        'aws': calc(-71.5px * 2),
+        'azure': calc(-70.8px * 3),
+        'bootstrap': calc((-70.7px * 4)),
+        'ionic': calc((-70.5px * 5)),
+        'javascript': calc((-70.5px * 6)),
+        'sqlserver': calc((-70.4px * 7)),
+        'netcore': calc((-70.3px * 8)),
+        'nestjs': calc((-70.4px * 9)),
+        'nodejs': calc((-70.3px * 10)),
+        'nextjs': calc((-70.25px * 11)),
+        'nx': calc((-70.25px * 12)),
+        'tailwindcss': calc((-70.2px * 13)),
+        'springboot': calc((-70px * 14)),
+      );
+
+      @each $tech, $position in $technologies {
+        &.#{$tech} {
+          animation: skillIn-#{$tech} 0.8s linear forwards;
+
+          @keyframes skillIn-#{$tech} {
+            from {
+              background-position: calc($position + -200px) 50%;
+            }
+
+            to {
+              background-position: $position 50%;
+            }
+          }
+        }
+      }
+
+      @keyframes spinnerLinear-reverse {
+        from {
+          background-position: 100% 50%;
+        }
+
+        to {
+          background-position: 0% 50%;
+        }
+      }
+
+      @each $tech, $position in $technologies {
+        &.#{$tech} {
+          background-position: $position 50%;
+        }
+      }
+    }
+  }
+
+  @keyframes spin-horizontal {
+    from {
+      background-position: -100% 50%;
+    }
+
+    to {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes make-in-box-r {
+    from {
+      width: 0;
+    }
+
+    40% {
+      width: 1px;
+      height: 100%;
+      border-right: 1px solid var(--mat-sys-outline);
+    }
+
+    80% {
+      width: 100%;
+      height: 100%;
+      border-right: 1px solid var(--mat-sys-outline);
+      border-bottom: 1px solid var(--mat-sys-outline);
+      border-top: 1px solid var(--mat-sys-outline);
+    }
+
+    100% {
+      width: 100%;
+      height: 100%;
+      border-right: 1px solid var(--mat-sys-outline);
+      border-bottom: 1px solid var(--mat-sys-outline);
+      border-top: 1px solid var(--mat-sys-outline);
+    }
+  }
+
+  .first-border {
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 15px;
+      height: 0%;
+      border-left: 1px solid var(--mat-sys-outline);
+      animation: scale-border-l 0.5s ease-in-out forwards;
+      animation-delay: 0.8s;
+      border-radius: 8px;
+    }
+
+    &::before {
+      top: 0;
+      transform-origin: 0% 0%;
+    }
+
+    &::after {
+      bottom: 0;
+      transform-origin: 0% 0%;
+    }
+  }
+
+  @keyframes scale-border-l {
+    from {
+      height: 0%;
+    }
+
+    to {
+      height: 100%;
+    }
+  }
+
+  &.left-item {
+    .first-border {
+      &::after,
+      &::before {
+        left: inherit !important;
+        right: 0 !important;
+        border-left: 0;
+        border-right: 1px solid var(--mat-sys-outline);
+      }
+    }
+
+    .image-border {
+      &::after {
+        right: inherit;
+        left: 0;
+        //border: 1px solid var(--mat-sys-outline);
+        animation: make-in-box-l 0.5s ease-in-out forwards;
+        transform-origin: 0% 50%;
+        animation-delay: 0.4s;
+      }
+    }
+
+    .border-line {
+      border: 1px solid var(--mat-sys-outline);
+      transform: scaleX(0);
+      transform-origin: 0% 50%;
+      animation: fadeline-in 0.5s ease-in-out forwards;
+      .years-text {
+        left: unset !important;
+        bottom: -14px !important;
+        right: 7px;
+        position: absolute;
+      }
+    }
+  }
+
+  @keyframes make-in-box-l {
+    from {
+      width: 0;
+    }
+
+    40% {
+      width: 1px;
+      height: 100%;
+      border-left: 1px solid var(--mat-sys-outline);
+    }
+
+    80% {
+      width: 100%;
+      height: 100%;
+      border-left: 1px solid var(--mat-sys-outline);
+      border-bottom: 1px solid var(--mat-sys-outline);
+      border-top: 1px solid var(--mat-sys-outline);
+    }
+
+    100% {
+      width: 100%;
+      height: 100%;
+      border-left: 1px solid var(--mat-sys-outline);
+      border-bottom: 1px solid var(--mat-sys-outline);
+      border-top: 1px solid var(--mat-sys-outline);
+    }
+  }
+}
+
+.skill-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-item.no-visible {
+  opacity: 0;
+  transform: translateY(-40px);
+}

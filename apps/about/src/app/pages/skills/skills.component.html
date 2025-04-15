@@ -1,0 +1,72 @@
+<div class="flex flex-col w-full px-[5rem] mb-30 pt-10">
+  <div class="flex flex-col items-start my-8">
+    <h3 class="text-6xl">Skills mas usados:</h3>
+    <sub class="text-2xl"
+      >siempre de la mano de html5, scss, entre otros...
+    </sub>
+  </div>
+  @for (skill of skills(); track $index;) { @if($index % 2 === 0) {
+  <section
+    #skillItem
+    class="skill-item w-full flex flex-row gap-4 items-center justify-end my-8 relative right-item"
+  >
+    <div class="w-20 h-[1px] border-line absolute right-[-5rem]">
+      <sub class="years-text"
+        >X {{ skill.years }} año {{ skill.years > 1 ? 's' : '' }}</sub
+      >
+    </div>
+    <div class="flex flex-col items-end">
+      <h4
+        class="animate__animated animate__fadeInUp text-3xl"
+        [style]="{ 'animation-delay': $index * 0.6 + 's' }"
+      >
+        {{ skill.skill }}:
+      </h4>
+      <p
+        class="text-end animate__animated animate__fadeInUp"
+        [style]="{ 'animation-delay': $index * 0.6 + 's' }"
+      >
+        {{ skill.use }}
+      </p>
+    </div>
+    <div class="image w-20 h-20 image-border">
+      <span class="first-border"></span>
+      <div class="image-sprite" [ngClass]="skill.skill.toLowerCase()"></div>
+    </div>
+  </section>
+  } @else {
+  <section
+    #skillItem
+    class="skill-item w-full flex flex-row-reverse gap-4 items-center justify-start my-8 relative left-item"
+  >
+    <div class="w-20 h-[1px] border-line absolute left-[-5rem]">
+      <sub class="years-text"
+        >X {{ skill.years }} año{{ skill.years > 1 ? 's' : '' }}</sub
+      >
+    </div>
+    <div class="flex flex-col items-start">
+      <h4
+        class="animate__animated animate__fadeInUp text-3xl"
+        [style]="{ 'animation-delay': $index * 0.6 + 's' }"
+      >
+        {{ skill.skill }}:
+      </h4>
+      <p
+        class="text-start animate__animated animate__fadeInUp"
+        [style]="{ 'animation-delay': $index * 0.6 + 's' }"
+      >
+        {{ skill.use }}
+      </p>
+    </div>
+    <div class="image w-20 h-20 image-border flex flex-row-reverse">
+      <span class="first-border"></span>
+      <div
+        #imageSpinner
+        class="image-sprite"
+        [ngClass]="skill.skill.toLowerCase()"
+        [attr.data-index]="$index"
+      ></div>
+    </div>
+  </section>
+  } }
+</div>

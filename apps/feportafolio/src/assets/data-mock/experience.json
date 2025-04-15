@@ -1,0 +1,51 @@
+[
+  {
+    "empresa": "Meridian Group",
+    "inicio": "2024",
+    "fin": "Actualidad",
+    "puesto": "Desarrollador Web",
+    "descripcion": "Diseño y desarrollo de soluciones frontend con Angular (v12 y v17), Next.js, JavaScript, Astro, Angular Material, Tailwind y SCSS. Implementación y validación de formularios reactivos, data binding, comunicación entre componentes (@Input, @Output, signals, hooks) y gestión de estados con RxJS. Creación de interfaces UI/UX con Figma, adobe."
+  },
+  {
+    "empresa": "Servientrega S.A",
+    "inicio": "2022",
+    "fin": "2023",
+    "puesto": "Desarrollador Full Stack Senior",
+    "descripcion": "Liderazgo técnico en desarrollo de aplicaciones móviles híbridas con Angular 12+, Ionic 6 y .NET Core. Gestión de bases de datos SQL Server, implementación de microservicios y patrones MVC. Coordinación de equipos bajo metodologías ágiles (Scrum), incluyendo planning, dailys y retrospectivas. Diseño de interfaces con Figma y tematización según guía de marca."
+  },
+  {
+    "empresa": "Q-visión S.A.S",
+    "inicio": "2018",
+    "fin": "2022",
+    "puesto": "Desarrollador Frontend",
+    "descripcion": "Desarrollo de aplicaciones web y móviles con Angular 9+, Ionic 5+, React y Vue.js. Integración con APIs (Django, .NET Core) y bases de datos SQL Server/PostgreSQL. Diseño UI/UX con Adobe XD y herramientas de prototipado. Implementación de CI/CD y pruebas con SonarQube bajo metodologías Scrum."
+  },
+  {
+    "empresa": "Faroweb.com.co",
+    "inicio": "2017",
+    "fin": "2018",
+    "puesto": "CEO Fundador",
+    "descripcion": "Desarrollo fullstack freelance con PHP-Laravel y MySQL. Servicios de community management, email marketing y posicionamiento SEO/SEM. Creación de sitios web con tecnologías frontend como Bootstrap y MaterializeCSS."
+  },
+  {
+    "empresa": "Hostdime.com.co",
+    "inicio": "2015",
+    "fin": "2017",
+    "puesto": "Diseñador y Desarrollador Web",
+    "descripcion": "Diseño e implementación de interfaces con Photoshop/Illustrator. Desarrollo frontend con HTML5, CSS3, Sass, JavaScript y AngularJS. Gestión de campañas de email marketing y colaboración con equipos backend."
+  },
+  {
+    "empresa": "Creasotol",
+    "inicio": "2012",
+    "fin": "2015",
+    "puesto": "Diseñador Web",
+    "descripcion": "Creación de mockups y maquetación web con HTML5, CSS3, JavaScript/jQuery. Integración con backend PHP."
+  },
+  {
+    "empresa": "Cauce Común",
+    "inicio": "2011",
+    "fin": "2011",
+    "puesto": "Diseñador Gráfico",
+    "descripcion": "Diseño de piezas gráficas y edición de video con Adobe Creative Suite (Photoshop, Illustrator, Premiere)."
+  }
+]

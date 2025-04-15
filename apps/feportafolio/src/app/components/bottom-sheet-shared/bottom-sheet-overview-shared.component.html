@@ -1,0 +1,35 @@
+<div class="grid grid-cols-4 gap-4 justify-center items-center w-full py-4">
+  <div class="col-span-4 text-center mb-5">
+    <button (click)="copiarEnlace()" mat-stroked-button>
+      {{ linkCopy ? 'Enlace copiado': 'Copiar enlace'}} <mat-icon>{{ linkCopy ? 'link':'content_copy'}}</mat-icon>
+    </button>
+  </div>
+  <div class="col-span-4">
+    <mat-divider></mat-divider>
+    <p class="my-3"><b class="font-medium">Compartir en:</b></p>
+  </div>
+  <div class="text-center">
+    <button (click)="compartirEnWhatsApp()" mat-fab class="btn-rounded-shared">
+      <img src="assets/whatsapp.png" alt="Whatsapp" />
+    </button>
+    <p class="mt-1">Whatsapp</p>
+  </div>
+  <div class="text-center">
+    <button (click)="compartirEnFacebook()" mat-fab class="btn-rounded-shared">
+      <img src="assets/facebook.png" alt="Facebook" />
+    </button>
+    <p class="mt-1">Facebook</p>
+  </div>
+  <div class="text-center">
+    <button (click)="irAInstagram()" mat-fab class="btn-rounded-shared">
+      <img src="assets/instagram.png" alt="Instagram" />
+    </button>
+    <p class="mt-1">Instagram</p>
+  </div>
+  <div class="text-center">
+    <button (click)="compartirEnTwitter()" mat-fab class="btn-rounded-shared">
+      <img src="assets/x-twitter.png" alt="x-twiiter" />
+    </button>
+    <p class="mt-1">X - Twitter</p>
+  </div>
+</div>

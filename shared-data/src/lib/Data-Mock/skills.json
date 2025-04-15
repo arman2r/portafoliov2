@@ -1,0 +1,78 @@
+[
+    {
+      "skill": "Angular",
+      "years": 7,
+      "use": "Desarrollo de aplicaciones empresariales, SPAs, dashboards administrativos y plataformas de e-commerce. Implementación de formularios reactivos, lazy loading, guards y comunicación entre componentes."
+    },
+    {
+      "skill": "Material",
+      "years": 5,
+      "use": "Creación de interfaces consistentes con componentes UI predefinidos (tablas, modales, steppers) en proyectos Angular. Tematización de aplicaciones según branding corporativo."
+    },
+    {
+      "skill": "AWS",
+      "years": 1,
+      "use": "Despliegue de microservicios en EC2, gestión de buckets S3 para almacenamiento de assets y configuración de CloudFront para CDN (proyecto independiente)."
+    },
+    {
+      "skill": "Azure",
+      "years": 3,
+      "use": "Implementación de CI/CD con Azure DevOps para pipelines de despliegue automático y gestión de repositorios Git y azure boards."
+    },
+    {
+      "skill": "Bootstrap",
+      "years": 8,
+      "use": "Maquetación rápida de prototipos y sitios responsivos, especialmente en proyectos legacy. Creación de layouts con grid system y componentes reutilizables."
+    },
+    {
+      "skill": "Ionic",
+      "years": 4,
+      "use": "Desarrollo de apps móviles híbridas (iOS/Android) para logística (última milla) y e-commerce, integrando plugins nativos como cámara y GPS."
+    },
+    {
+      "skill": "JavaScript",
+      "years": 10,
+      "use": "Base para todos los proyectos frontend. Uso avanzado en manipulación del DOM, promesas, async/await y patrones de diseño como Singleton y Observer."
+    },
+    {
+      "skill": "SQLServer",
+      "years": 5,
+      "use": "Diseño de bases de datos relacionales, optimización de queries complejos y creación de stored procedures para reportes financieros."
+    },
+    {
+      "skill": "NETCore",
+      "years": 4,
+      "use": "Desarrollo de APIs REST para integración frontend-backend, implementación de autenticación JWT y patrones como Repository."
+    },
+    {
+      "skill": "SpringBoot",
+      "years": 2,
+      "use": "Desarrollo de APIs REST para integración frontend-backend, implementación de autenticación JWT y patrones como Repository."
+    },
+    {
+      "skill": "NestJS",
+      "years": 1,
+      "use": "Construcción de API Gateway para microservicios con módulos escalables, usando decoradores y TypeORM (proyecto independiente)."
+    },
+    {
+      "skill": "Nodejs",
+      "years": 3,
+      "use": "Creación de servicios backend para procesamiento de archivos (CSV/Excel) y automatización de tareas con cron jobs."
+    },
+    {
+      "skill": "Nextjs",
+      "years": 2,
+      "use": "Desarrollo de sitios SSR/SSG para SEO, landing pages de alto rendimiento y dashboards con pre-renderizado."
+    },
+    {
+      "skill": "Nx",
+      "years": 1,
+      "use": "Monorepo para gestión de múltiples librerías compartidas (UI components, utils) en un proyecto modular con Angular y NestJS (proyecto independiente)."
+    },
+    {
+      "skill": "Tailwindcss",
+      "years": 2,
+      "use": "Estilado rápido de componentes en proyectos donde se priorizó la personalización sobre frameworks UI predefinidos. Uso con utility-first CSS."
+    }
+  ]
+  

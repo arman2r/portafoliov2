@@ -1,0 +1,2 @@
+@use './_theme-color' as theme;
+@include mat.all-component-themes(theme.$dark);

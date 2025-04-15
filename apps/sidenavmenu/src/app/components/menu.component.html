@@ -1,0 +1,41 @@
+<div class="flex flex-row w-full h-full">
+  <mat-list class="list-menu">
+    <mat-list-item
+      role="listitem"
+      routerLink="/"
+      fragment="presentacion"
+      [class.active-link]="isActive('presentacion')"
+    >
+      <div class="w-full flex justify-between items-center pe-5">
+        <span>Inicio</span> <mat-icon>chevron_right</mat-icon>
+      </div>
+    </mat-list-item>
+    <mat-list-item
+      routerLink="/"
+      fragment="skills"
+      [class.active-link]="isActive('skills')"
+      role="listitem"
+      ><div class="w-full flex justify-between items-center pe-5">
+        <span>Skills</span> <mat-icon>chevron_right</mat-icon>
+      </div></mat-list-item
+    >
+    <mat-list-item
+      routerLink="/"
+      fragment="experiencia"
+      [class.active-link]="isActive('experiencia')"
+      role="listitem"
+      ><div class="w-full flex justify-between items-center pe-5">
+        <span>Experiencia</span> <mat-icon>chevron_right</mat-icon>
+      </div></mat-list-item
+    >
+    <mat-list-item
+      routerLink="/"
+      fragment="contactar"
+      [class.active-link]="isActive('contactar')"
+      role="listitem"
+      ><div class="w-full flex justify-between items-center pe-5">
+        <span>Contactar</span> <mat-icon>chevron_right</mat-icon>
+      </div></mat-list-item
+    >
+  </mat-list>
+</div>

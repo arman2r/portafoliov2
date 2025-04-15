@@ -1,0 +1,90 @@
+<div class="flex flex-col w-full px-[5rem] pb-[5rem]">
+  <div class="flex flex-col items-start my-8">
+    <h3 class="text-6xl">Contactar:</h3>
+    <sub class="text-2xl"
+      >Completa el formulario y cuentame como puedo ayudarte</sub
+    >
+    <sub class="text-lg">Los campos marcados con * son obligatorios</sub>
+  </div>
+  <form [formGroup]="contactForm">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-1/2 md:px-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nombres</mat-label>
+          <input formControlName="names" matInput placeholder="Nombre(s)" />
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 md:px-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Apellidos</mat-label>
+          <input
+            formControlName="lastNames"
+            matInput
+            placeholder="Apellido(s)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 md:px-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Teléfono</mat-label>
+          <input
+            formControlName="phoneNumber"
+            matInput
+            placeholder="Teléfono o whatsapp"
+          />
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 md:px-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>¿Eres una empresa?</mat-label>
+          <input
+            formControlName="companyName"
+            matInput
+            placeholder="Si eres una empresa, nombre de la empresa"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="w-full my-5 px-2">
+        <mat-label class="me-4">Motivo*:</mat-label>
+        <mat-radio-group formControlName="reason">
+          <mat-radio-button class="me-4" value="after"
+            >Entrevista</mat-radio-button
+          >
+          <mat-radio-button class="me-4" value="before"
+            >Cotizar Servicios</mat-radio-button
+          >
+          <mat-radio-button class="me-4" value="before">Otros</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="w-full my-2 mb-0 px-2">
+        <mat-form-field class="w-full" appearance="outline">
+          <mat-label>Deje aquí su mensaje</mat-label>
+          <textarea
+            class="w-full"
+            matInput
+            placeholder="Ex. Me gustaria saber..."
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="w-full my-5 px-2">
+        <mat-checkbox class="check-politics" formControlName="terms">
+          Aceptar políticas de privacidad *</mat-checkbox
+        >
+      </div>
+
+      <div class="w-full px-2">
+        <button
+          mat-fab
+          extended
+          [disabled]="!contactForm.valid"
+          (click)="submit()"
+        >
+          Enviar <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

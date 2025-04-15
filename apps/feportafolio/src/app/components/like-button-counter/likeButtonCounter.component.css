@@ -1,0 +1,4 @@
+.animated-border-btn { 
+    background-color: var(--mat-sys-on-secondary-fixed) !important; 
+    color: var(--mat-sys-on-surface) !important;
+}
