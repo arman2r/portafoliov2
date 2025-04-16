@@ -40,16 +40,16 @@ export class AppComponent implements OnInit {
   menuViewContainer!: ViewContainerRef;
   @ViewChild('drawer') drawer!: MatDrawer;
 
-
   protected readonly isMobile = signal(true);
 
   private readonly _mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;
+  componentMenuRef!: any;
 
   constructor(private router: Router, private meta: Meta) {
     const media = inject(MediaMatcher);
 
-    this._mobileQuery = media.matchMedia('(max-width: 639px)');
+    this._mobileQuery = media.matchMedia('(max-width: 1023.9px)');
     console.log(this._mobileQuery)
     this.isMobile.set(this._mobileQuery.matches);
     console.log(this.isMobile);
@@ -96,7 +96,12 @@ export class AppComponent implements OnInit {
 
   async loadRemotes(): Promise<void> {
     const ms = await import('sidenavmenu/MenuComponent');
-    this.menuViewContainer.createComponent(ms.MenuComponent);
+    this.componentMenuRef = this.menuViewContainer.createComponent(ms.MenuComponent);
+    if (this.isMobile()) {
+      (this.componentMenuRef.instance as any).menuClicked.subscribe(() => {
+        this.drawer.close();
+      });
+    }
   }
 
   ngOnDestroy(): void {

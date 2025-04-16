@@ -37,7 +37,7 @@ export class ExperienceComponent {
     const element = this.patternElement()?.nativeElement;
     if (!element) return;
     console.log('element', element);
-    const scrollAmount = window.innerWidth < 768 ? window.innerWidth : 280;
+    const scrollAmount = window.innerWidth <= 1024 ? window.innerWidth : 280;
     element.scrollBy({ left: scrollAmount + 10, behavior: 'smooth' });
   }
 
@@ -46,7 +46,7 @@ export class ExperienceComponent {
     const element = this.patternElement()?.nativeElement;
     if (!element) return;
 
-    const scrollAmount = window.innerWidth < 768 ? window.innerWidth : 280;
+    const scrollAmount = window.innerWidth <= 1024 ? window.innerWidth : 280;
     element.scrollBy({ left: -scrollAmount - 10, behavior: 'smooth' });
   }
 

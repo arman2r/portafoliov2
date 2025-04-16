@@ -4,6 +4,7 @@
       role="listitem"
       routerLink="/"
       fragment="presentacion"
+      (click)="onCloseMenu()"
       [class.active-link]="isActive('presentacion')"
     >
       <div class="w-full flex justify-between items-center pe-5">
@@ -15,6 +16,7 @@
       fragment="skills"
       [class.active-link]="isActive('skills')"
       role="listitem"
+      (click)="onCloseMenu()"
       ><div class="w-full flex justify-between items-center pe-5">
         <span>Skills</span> <mat-icon>chevron_right</mat-icon>
       </div></mat-list-item
@@ -24,6 +26,7 @@
       fragment="experiencia"
       [class.active-link]="isActive('experiencia')"
       role="listitem"
+      (click)="onCloseMenu()"
       ><div class="w-full flex justify-between items-center pe-5">
         <span>Experiencia</span> <mat-icon>chevron_right</mat-icon>
       </div></mat-list-item
@@ -33,6 +36,7 @@
       fragment="contactar"
       [class.active-link]="isActive('contactar')"
       role="listitem"
+      (click)="onCloseMenu()"
       ><div class="w-full flex justify-between items-center pe-5">
         <span>Contactar</span> <mat-icon>chevron_right</mat-icon>
       </div></mat-list-item

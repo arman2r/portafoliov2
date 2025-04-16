@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 
     &::before {
       content: '';
@@ -59,44 +59,46 @@
 
       &:nth-child(2) {
         transform: scaleX(50%);
+        transition: all 0.2s ease-in-out;
         animation: scaleOutMediumLine 0.4s ease-in-out forwards;
       }
 
       &:last-child {
         transform-origin: 0% 100%;
         transition-delay: 2s;
-        bottom: -11px;
+        bottom: -9px;
         transition: all 0.2s ease-in-out;
         animation: scaleOutDownLine 0.3s ease-in-out forwards;
       }
     }
   }
+  @media (min-width: 1024px) {
+    &:hover {
+      .pattern-lines {
+        span:nth-child(1) {
+          transform-origin: 100% 100%;
+          animation: scaleDownLine 0.5s ease-in-out forwards;
+        }
 
-  &:hover {
-    .pattern-lines {
-      span:nth-child(1) {
-        transform-origin: 100% 100%;
-        animation: scaleDownLine 0.5s ease-in-out forwards;
-      }
+        span:nth-child(2) {
+          transform: scaleX(0) translateX(-50%);
+          animation: scaleMediumLine 1s ease-in-out forwards;
+        }
 
-      span:nth-child(2) {
-        transform: scaleX(0) translateX(-50%);
-        animation: scaleMediumLine 1s ease-in-out forwards;
-      }
+        span:nth-child(3) {
+          transform-origin: 0% 0%;
+          animation: scaleDownLine 0.5s ease-in-out forwards;
+        }
 
-      span:nth-child(3) {
-        transform-origin: 0% 0%;
-        animation: scaleDownLine 0.5s ease-in-out forwards;
-      }
+        &::before {
+          animation: scaleBorder 0.25s ease-in-out forwards;
+          animation-delay: 0.45s;
+        }
 
-      &::before {
-        animation: scaleBorder 0.25s ease-in-out forwards;
-        animation-delay: 0.45s;
-      }
-
-      &::after {
-        animation: scaleBorder 0.25s ease-in-out forwards;
-        animation-delay: 0.45s;
+        &::after {
+          animation: scaleBorder 0.25s ease-in-out forwards;
+          animation-delay: 0.45s;
+        }
       }
     }
   }
@@ -136,47 +138,52 @@
           transform-origin: 100% 50%;
           top: -11px;
           transition: all 0.2s ease-in-out;
-          transition-delay: .3s;
+          transition-delay: 0.3s;
           animation: none;
         }
 
         &:nth-child(2) {
-          transform: scaleX(50%) translateX(50%);
-          transition: all cubic-bezier(0.55, 0.055, 0.675, 0.19) .3s;
-          animation: none;
+          transform: translateX(25%) scaleX(0.5) !important;
+          animation: none !important;
+          transition: all ease-in-out 0.2s;
+          transition-delay: 0.2s;
         }
 
         &:last-child {
           transform-origin: 0% 100%;
           bottom: -11px;
           transition: all 0.2s ease-in-out;
-          animation:none;
-          transition-delay: .3s;
+          animation: none;
+          transition-delay: 0.3s;
         }
       }
     }
-    &:hover {
-      .pattern-lines {
-        span {
-          &:nth-child(1) {
-            transform-origin: 0% 100%; 
-            top: -11px;
-            transition: all 0.2s ease-in-out;
-            animation: none;
-            transform: rotate3d(10, 10, 10, 37deg) translateX(2px) translateY(-2px);
-          }
+    @media (min-width: 1024px) {
+      &:hover {
+        .pattern-lines {
+          span {
+            &:nth-child(1) {
+              transform-origin: 0% 100%;
+              top: -11px;
+              transition: all 0.2s ease-in-out;
+              animation: none;
+              transform: rotate3d(10, 10, 10, 37deg) translateX(2px)
+                translateY(-2px);
+            }
 
-          &:nth-child(2) {
-            transform: scaleX(0%) translateX(-50%);
-            animation: none;
-          }
+            &:nth-child(2) {
+              transform: scaleX(0%) translateX(-50%);
+              animation: none;
+            }
 
-          &:last-child {
-            transform-origin: 0% 100%; 
-            bottom: -11px;
-            transition: all 0.2s ease-in-out;
-            animation: none;
-            transform: rotate3d(10, 10, 10, -37deg) translateX(2px) translateY(2px);
+            &:last-child {
+              transform-origin: 0% 100%;
+              bottom: -11px;
+              transition: all 0.2s ease-in-out;
+              animation: none;
+              transform: rotate3d(10, 10, 10, -40deg) translateX(2px)
+                translateY(2px);
+            }
           }
         }
       }

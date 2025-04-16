@@ -1,4 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,9 +15,10 @@ import { filter } from 'rxjs';
 export class MenuComponent {
 
   activeFragment?: string | null = null;;
-  private sectionIds = ['presentacion', 'skills', 'experiencia', 'contactar'];
+  private sectionIds = ['presentacion', 'skills', 'experiencia', 'contactar']; 
 
   private scrollListener = this.onScroll.bind(this);
+  @Output() menuClicked = new EventEmitter<void>();
 
   constructor(public route: ActivatedRoute, private router: Router, @Inject(DOCUMENT) private document: Document) {
     //console.log('location', this.activeFragment.location);
@@ -81,6 +83,10 @@ export class MenuComponent {
   isActive(fragment: string): boolean {
     //console.log('fragment', this.activeFragment, fragment);
     return this.activeFragment === fragment;
+  }
+
+  onCloseMenu(): void {
+    this.menuClicked.emit();
   }
 
 }
