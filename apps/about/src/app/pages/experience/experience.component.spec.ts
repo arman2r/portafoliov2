@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExperienceComponent } from './experience.component';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent;
@@ -8,6 +9,7 @@ describe('ExperienceComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ExperienceComponent],
+      providers: [provideHttpClientTesting()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExperienceComponent);
