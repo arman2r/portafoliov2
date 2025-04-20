@@ -15,6 +15,5 @@
       "src": "/(.*)",
       "dest": "dist/apps/feportafolio/server/main.js"
     }
-  ],
-  "buildCommand": "npx nx build feportafolio --configuration=production && npx nx run feportafolio:server:production"
+  ]  
 }
