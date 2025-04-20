@@ -1,15 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "apps/about/project.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "dist/apps/about"
-        }
-      }
-    ],
-    "buildCommand": "npx nx build about --prod",
-    "outputDirectory": "dist/apps/about"
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/apps/about/server/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/apps/about/browser/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/apps/about/server/main.js"
+    }
+  ],
+  "buildCommand": "npx nx build about && npx nx build about --configuration=production",
+  "outputDirectory": "dist/apps/about"
+}
