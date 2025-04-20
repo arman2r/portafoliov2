@@ -20,7 +20,7 @@ const config: ModuleFederationConfig = {
     ? [
       ['admin', 'https://admin-your-vercel.vercel.app/remoteEntry.mjs'],
       ['sidenavmenu', 'https://sidenavmenu-your-vercel.vercel.app/remoteEntry.mjs'],
-      ['about', 'https://about-your-vercel.vercel.app/remoteEntry.mjs']
+      ['about', 'about-portafolio.vercel.app/remoteEntry.mjs']
     ]
     : [
       ['admin', 'http://localhost:4201/remoteEntry.mjs'],
