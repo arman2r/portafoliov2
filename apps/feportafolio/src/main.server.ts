@@ -49,6 +49,10 @@ export function app(): express.Express {
       .catch((err) => next(err));
   });
 
+  server.get('/api/ping', (req, res) => {
+    res.send('pong desde SSR!');
+  });
+
   return server;
 }
 
