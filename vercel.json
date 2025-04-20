@@ -1,19 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/apps/feportafolio/server/main.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/apps/feportafolio/browser/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/apps/feportafolio/server/main.js"
-    }
-  ]  
+  "public": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
