@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "apps/about/project.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist/apps/about"
+        }
+      }
+    ],
+    "buildCommand": "npx nx build about --prod",
+    "outputDirectory": "dist/apps/about"
+  }
+  
