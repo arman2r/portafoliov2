@@ -10,6 +10,6 @@
       }
     ],
     "buildCommand": "npx nx build sidenavmenu --prod",
-    "outputDirectory": "dist/apps/admin"
+    "outputDirectory": "dist/apps/sidenavmenu"
   }
   
