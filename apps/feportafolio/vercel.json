@@ -2,13 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/feportafolio/project.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/apps/feportafolio"
-      }
+      "src": "dist/apps/feportafolio/server/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/apps/feportafolio/browser/**",
+      "use": "@vercel/static"
     }
   ],
-  "buildCommand": "npx nx build feportafolio --prod",
-  "outputDirectory": "dist/apps/feportafolio"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/apps/feportafolio/server/main.js"
+    }
+  ]
 }
