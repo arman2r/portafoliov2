@@ -33,6 +33,7 @@
         ],
         "styles": [
           "shared-styles/src/lib/tokens.scss",
+          "shared-styles/src/lib/styles.scss",
           "apps/feportafolio/src/styles.scss"
         ],
         "scripts": [],

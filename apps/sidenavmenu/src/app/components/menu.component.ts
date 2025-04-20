@@ -8,6 +8,7 @@ import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
+  standalone: true,
   imports: [CommonModule, RouterModule, MatIconModule, MatListModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
@@ -22,6 +23,8 @@ export class MenuComponent {
 
   constructor(public route: ActivatedRoute, private router: Router, @Inject(DOCUMENT) private document: Document) {
     //console.log('location', this.activeFragment.location);
+    console.log('MenuComponent loaded');
+
   }
 
   ngOnInit() {

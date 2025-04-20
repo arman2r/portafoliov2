@@ -1,4 +1,5 @@
-import { Component, effect, inject, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-empty-function */
+import { AfterViewInit, Component, effect, inject, OnDestroy, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
@@ -12,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedBtnComponent } from "./components/shared-btn/sharedBtn.component";
 import { FooterComponent } from './components/footer/footer.component';
 import { MediaMatcher } from '@angular/cdk/layout';
-
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
 @Component({
   imports: [
     CommonModule,
@@ -31,7 +33,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrl: './app.component.scss',
   standalone: true
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   title = inject(Title);
   showFiller = true;
 
@@ -46,15 +50,22 @@ export class AppComponent implements OnInit {
   private readonly _mobileQueryListener: () => void;
   componentMenuRef!: any;
 
-  constructor(private router: Router, private meta: Meta) {
-    const media = inject(MediaMatcher);
-
-    this._mobileQuery = media.matchMedia('(max-width: 1023.9px)');
-    console.log(this._mobileQuery)
-    this.isMobile.set(this._mobileQuery.matches);
-    console.log(this.isMobile);
-    this._mobileQueryListener = () => this.isMobile.set(this._mobileQuery.matches);
-    this._mobileQuery.addEventListener('change', this._mobileQueryListener);
+  constructor(private router: Router, private meta: Meta, @Inject(PLATFORM_ID) private platformId: object) {
+    if (isPlatformBrowser(this.platformId)) {
+      const media = inject(MediaMatcher);
+      this._mobileQuery = media.matchMedia('(max-width: 1023.9px)');
+      this.isMobile.set(this._mobileQuery.matches);
+      this._mobileQueryListener = () => this.isMobile.set(this._mobileQuery.matches);
+      this._mobileQuery.addEventListener('change', this._mobileQueryListener);
+    } else {
+      // Fallback para servidor
+      this._mobileQuery = {
+        matches: false,
+        addEventListener: () => { },
+        removeEventListener: () => { },
+      } as any;
+      this._mobileQueryListener = () => { };
+    }
   }
 
   ngOnInit() {
@@ -68,30 +79,34 @@ export class AppComponent implements OnInit {
       { property: 'og:type', content: 'website' }
     ]);
 
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        //console.log('NavigationEnd event triggered', this.router);
-        const tree = this.router.parseUrl(this.router.url);
-        if (tree.fragment) {
-          //console.log(tree.fragment.length);
-          const element = document.querySelector('#' + tree.fragment);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (this.isBrowser) {
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe(() => {
+          //console.log('NavigationEnd event triggered', this.router);
+          const tree = this.router.parseUrl(this.router.url);
+          if (tree.fragment) {
+            //console.log(tree.fragment.length);
+            const element = document.querySelector('#' + tree.fragment);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
           }
-        }
-      });
+        });
+    }
   }
 
   ngAfterViewInit() {
     // reactivo al cambio de resolución
-    effect(() => {
-      if (this.isMobile()) {
-        this.drawer?.close();
-      } else {
-        this.drawer?.open();
-      }
-    });
+    if (this.isBrowser) {
+      effect(() => {
+        if (this.isMobile()) {
+          this.drawer?.close();
+        } else {
+          this.drawer?.open();
+        }
+      });
+    }
   }
 
   async loadRemotes(): Promise<void> {
@@ -105,6 +120,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this._mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    if (this.isBrowser) {
+      this._mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    }
   }
 }

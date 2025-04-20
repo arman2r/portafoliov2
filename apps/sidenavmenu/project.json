@@ -22,7 +22,10 @@
             "input": "apps/sidenavmenu/public"
           }
         ],
-        "styles": ["apps/sidenavmenu/src/styles.scss"],
+        "styles": [
+          "shared-styles/src/lib/styles.scss",
+          "apps/sidenavmenu/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/sidenavmenu/webpack.config.ts"

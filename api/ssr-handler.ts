@@ -1,7 +1,8 @@
-// api/ssr-handler.ts
-import { createServer, proxy } from 'vercel-node-server';
-import app from '../dist/apps/feportafolio/server/main';
+import { IncomingMessage, ServerResponse } from 'http';
 
-export default createServer((req, res) => {
+// Importa la app compilada desde Angular Universal
+const app = require('../dist/apps/feportafolio/server/main').app;
+
+export default function handler(req: IncomingMessage, res: ServerResponse) {
   app(req, res);
-});
+}

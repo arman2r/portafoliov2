@@ -1,5 +1,7 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
+const isProd = process.env['NODE_ENV'] === 'production';
+
 const config: ModuleFederationConfig = {
   name: 'feportafolio',
   /**
@@ -14,7 +16,17 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['admin', 'sidenavmenu', 'about'],
+  remotes: isProd
+    ? [
+      ['admin', 'https://admin-your-vercel.vercel.app/remoteEntry.mjs'],
+      ['sidenavmenu', 'https://sidenavmenu-your-vercel.vercel.app/remoteEntry.mjs'],
+      ['about', 'https://about-your-vercel.vercel.app/remoteEntry.mjs']
+    ]
+    : [
+      ['admin', 'http://localhost:4201/remoteEntry.mjs'],
+      ['sidenavmenu', 'http://localhost:4202/remoteEntry.mjs'],
+      ['about', 'http://localhost:4203/remoteEntry.mjs']
+    ]
 };
 
 /**

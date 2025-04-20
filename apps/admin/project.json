@@ -22,7 +22,10 @@
             "input": "apps/admin/public"
           }
         ],
-        "styles": ["apps/admin/src/styles.scss"],
+        "styles": [
+          "shared-styles/src/lib/styles.scss",
+          "apps/admin/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/admin/webpack.config.ts"
