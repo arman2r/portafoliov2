@@ -1,7 +1,6 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
-const isProd =
-  process.env['REMOTE_URL_MODE'] === 'production';
+const isProd = process.env['REMOTE_URL_MODE'] === 'production';
 
 const config: ModuleFederationConfig = {
   name: 'feportafolio',
@@ -30,8 +29,8 @@ const config: ModuleFederationConfig = {
     ]
 };
 
-console.log('REMOTE_URL_MODE:', process.env['REMOTE_URL_MODE']);
-console.log('Remotes:', config.remotes);
+console.log('API URL:', process.env.NX_PUBLIC_API_URL);
+console.log('Remote Mode:', process.env.REMOTE_URL_MODE);
 
 /**
  * Nx requires a default export of the config to allow correct resolution of the module federation graph.

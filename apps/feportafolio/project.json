@@ -58,7 +58,13 @@
           "outputHashing": "all",
           "customWebpackConfig": {
             "path": "apps/feportafolio/webpack.prod.config.ts"
-          }
+          },
+          "fileReplacements": [
+            {
+              "replace": "shared-data/src/lib/environments/environment.ts",
+              "with": "shared-data/src/lib/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
