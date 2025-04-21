@@ -39,7 +39,13 @@
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/feportafolio/webpack.config.ts"
-        }
+        },
+        "fileReplacements": [
+          {
+            "replace": "shared-data/src/lib/environments/environment.ts",
+            "with": "shared-data/src/lib/environments/environment.prod.ts"
+          }
+        ]
       },
       "configurations": {
         "production": {
