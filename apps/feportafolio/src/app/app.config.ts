@@ -22,9 +22,6 @@ export const appConfig: ApplicationConfig = {
       })), provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
     provideAnimations(),
-    {
-      provide: API_BASE_URL,
-      useValue: process.env['NX_PUBLIC_API_URL'] || 'http://localhost:4200'
-    },
+    { provide: API_BASE_URL, useValue: environment.apiUrl },
   ],
 };

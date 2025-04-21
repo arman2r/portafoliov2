@@ -18,8 +18,9 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled', // o 'enabled'
         anchorScrolling: 'enabled',
       })), provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    { provide: API_BASE_URL, useValue: environment.apiUrl },
   ],
 };
 
-console.log('[API_BASE_URL]', environment.apiUrl);
+console.log('[ABOUT REMOTE] API Base URL:', environment.apiUrl);
