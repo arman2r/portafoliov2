@@ -11,7 +11,8 @@ export class SkillsService {
 
   private skillsUrl!: string; // Ajusta la ruta si es necesario
 
-  constructor(private http: HttpClient, @Inject(API_BASE_URL) private apiUrl: string) {     
+  constructor(private http: HttpClient, @Inject(API_BASE_URL) private apiUrl: string) {   
+    console.log('API base URL:', this.apiUrl);  
   }
 
   getSkills(): Observable<ISkill[]> {
