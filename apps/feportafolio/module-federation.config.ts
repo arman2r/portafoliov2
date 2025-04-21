@@ -1,9 +1,7 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
 const isProd =
-  process.env['NODE_ENV'] === 'production' ||
-  process.env['VERCEL_ENV'] === 'production' ||
-  process.env['NX_TASK_TARGET_CONFIGURATION'] === 'production';
+  process.env['REMOTE_URL_MODE'] === 'production';
 
 const config: ModuleFederationConfig = {
   name: 'feportafolio',
@@ -23,14 +21,17 @@ const config: ModuleFederationConfig = {
     ? [
       ['admin', 'https://admin-portafolio.vercel.app/remoteEntry.mjs'],
       ['sidenavmenu', 'https://sidenavmenu-portafolio.vercel.app/remoteEntry.mjs'],
-      ['about', 'https://about-portafolio.vercel.app/remoteEntry.mjs']
+      ['about', 'https://about-portafolio.vercel.app/remoteEntry.mjs'],
     ]
     : [
       ['admin', 'http://localhost:4201/remoteEntry.mjs'],
       ['sidenavmenu', 'http://localhost:4202/remoteEntry.mjs'],
-      ['about', 'http://localhost:4203/remoteEntry.mjs']
+      ['about', 'http://localhost:4203/remoteEntry.mjs'],
     ]
 };
+
+console.log('REMOTE_URL_MODE:', process.env['REMOTE_URL_MODE']);
+console.log('Remotes:', config.remotes);
 
 /**
  * Nx requires a default export of the config to allow correct resolution of the module federation graph.
