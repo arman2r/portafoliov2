@@ -52,8 +52,8 @@
           },
           "fileReplacements": [
             {
-              "replace": "apps/about/src/environments/environment.ts",
-              "with": "apps/about/src/environments/environment.prod.ts"
+              "replace": "shared-data/src/lib/environments/environment.ts",
+              "with": "shared-data/src/lib/environments/environment.prod.ts"
             }
           ]
         },
