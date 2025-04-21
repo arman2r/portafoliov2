@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import 'zone.js/node';
 
 import { APP_BASE_HREF } from '@angular/common';
@@ -7,6 +8,11 @@ import * as cors from 'cors';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './bootstrap.server';
+import { environment } from '@portafolio/shared-data';
+
+// Extiende la interfaz ProcessEnv para incluir VERCEL
+const isVercel = process.env['VERCEL'] === '1';
+const port = process.env['PORT'] || 4000;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -16,12 +22,22 @@ export function app(): express.Express {
     ? join(distFolder, 'index.original.html')
     : join(distFolder, 'index.html');
 
+
+  console.log('Server Environment:', {
+    apiUrl: environment.apiUrl,
+    production: environment.production,
+    vercel: isVercel
+  });
+
   server.use(cors());
 
   const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+
+  // Configuración para Vercel
+  server.enable('trust proxy'); // Para manejar correctamente los headers en Vercel
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -30,6 +46,7 @@ export function app(): express.Express {
     '*.*',
     express.static(distFolder, {
       maxAge: '1y',
+      fallthrough: false
     })
   );
 
@@ -43,7 +60,10 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: distFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [
+          { provide: APP_BASE_HREF, useValue: baseUrl },
+          { provide: 'SERVER_ENVIRONMENT', useValue: environment }
+        ],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));
@@ -66,6 +86,9 @@ function run(): void {
   });
 }
 
-run();
+// Solo ejecuta el servidor directamente si no estamos en Vercel
+if (!isVercel) {
+  run();
+}
 
 export default bootstrap;

@@ -4,7 +4,12 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/server",
+    "target": "es2020",
     "types": ["node"]
   },
-  "files": ["src/main.server.ts", "src/server.ts"]
+  "files": ["src/main.server.ts", "src/server.ts"],
+  "angularCompilerOptions": {
+    "entryComponent": "./src/app/app.component",  // Cambiado de entryModule a entryComponent
+    "strictInjectionParameters": true
+  }
 }

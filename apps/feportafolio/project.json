@@ -131,19 +131,27 @@
       },
       "configurations": {
         "production": {
-          "outputHashing": "media"
+          "outputHashing": "media",
+          "optimization": true,
+          "sourceMap": false,
+          "namedChunks": false
         },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
           "sourceMap": true,
-          "extractLicenses": false
+          "extractLicenses": false,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"
     },
     "serve-ssr": {
       "executor": "@nx/angular:module-federation-dev-ssr",
+      "options": {
+        "port": 4200,
+        "devRemotes": ["admin", "sidenavmenu", "about"]
+      },
       "configurations": {
         "development": {
           "browserTarget": "feportafolio:build:development",
