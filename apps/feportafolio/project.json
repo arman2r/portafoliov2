@@ -58,13 +58,7 @@
           "outputHashing": "all",
           "customWebpackConfig": {
             "path": "apps/feportafolio/webpack.prod.config.ts"
-          },
-          "fileReplacements": [
-            {
-              "replace": "shared-data/src/lib/environments/environment.ts",
-              "with": "shared-data/src/lib/environments/environment.prod.ts"
-            }
-          ]
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -131,27 +125,19 @@
       },
       "configurations": {
         "production": {
-          "outputHashing": "media",
-          "optimization": true,
-          "sourceMap": false,
-          "namedChunks": false
+          "outputHashing": "media"
         },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
           "sourceMap": true,
-          "extractLicenses": false,
-          "namedChunks": true
+          "extractLicenses": false
         }
       },
       "defaultConfiguration": "production"
     },
     "serve-ssr": {
       "executor": "@nx/angular:module-federation-dev-ssr",
-      "options": {
-        "port": 4200,
-        "devRemotes": ["admin", "sidenavmenu", "about"]
-      },
       "configurations": {
         "development": {
           "browserTarget": "feportafolio:build:development",
