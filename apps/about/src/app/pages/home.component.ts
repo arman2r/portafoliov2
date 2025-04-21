@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SkillsComponent } from './skills/skills.component';
@@ -12,4 +12,11 @@ import { ContactComponent } from './contact/contact.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    const el = document.querySelector('#presentacion');
+    if (el) {
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+  }
+}

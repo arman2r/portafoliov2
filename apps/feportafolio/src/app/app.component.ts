@@ -87,10 +87,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
           const tree = this.router.parseUrl(this.router.url);
           if (tree.fragment) {
             //console.log(tree.fragment.length);
-            const element = document.querySelector('#' + tree.fragment);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            const checkAndScroll = () => {
+              const element = document.querySelector('#' + tree.fragment);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              } else {
+                // Si el elemento aún no existe, intenta de nuevo en un momento
+                setTimeout(checkAndScroll, 100);
+              }
+            };
+            checkAndScroll();
           }
         });
     }

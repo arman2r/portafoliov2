@@ -8,6 +8,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { API_BASE_URL, environment } from '@portafolio/shared-data';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       })), provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideAnimations()
+    provideAnimations(),
+    { provide: API_BASE_URL, useValue: environment.apiUrl },
   ],
 };

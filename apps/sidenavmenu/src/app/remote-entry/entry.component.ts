@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from '../components/menu.component';
 import { RouterModule } from '@angular/router';
 
 @Component({

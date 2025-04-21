@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ISkill } from '../../Interfaces/skill.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SkillsService {
 

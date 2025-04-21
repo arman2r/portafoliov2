@@ -8,6 +8,7 @@ import * as cors from 'cors';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './bootstrap.server';
+import { API_BASE_URL, environment } from '@portafolio/shared-data'; 
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -42,7 +43,10 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserBundles,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [
+          { provide: APP_BASE_HREF, useValue: baseUrl },
+          { provide: API_BASE_URL, useValue: environment.apiUrl },
+        ],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));
