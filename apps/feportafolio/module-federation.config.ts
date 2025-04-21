@@ -1,6 +1,9 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
-const isProd = process.env['NODE_ENV'] === 'production';
+const isProd =
+  process.env['NODE_ENV'] === 'production' ||
+  process.env['VERCEL_ENV'] === 'production' ||
+  process.env['NX_TASK_TARGET_CONFIGURATION'] === 'production';
 
 const config: ModuleFederationConfig = {
   name: 'feportafolio',
