@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:3000' // backend real
+    apiUrl: 'http://https://portafolio-be.onrender.com' // backend real
 };
