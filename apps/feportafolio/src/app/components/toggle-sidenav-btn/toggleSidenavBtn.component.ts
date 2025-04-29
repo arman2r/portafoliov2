@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-toggle-sidenav-btn',
   imports: [CommonModule, MatButtonModule],
   templateUrl: './toggleSidenavBtn.component.html',
-  styleUrl: './toggleSidenavBtn.component.css',
+  styleUrl: './toggleSidenavBtn.component.scss',
   standalone: true,
 })
 export class ToggleSidenavBtnComponent {

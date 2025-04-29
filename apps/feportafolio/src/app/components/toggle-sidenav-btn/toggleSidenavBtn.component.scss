@@ -72,6 +72,7 @@
       }
     }
   }
+
   @media (min-width: 1024px) {
     &:hover {
       .pattern-lines {
@@ -146,7 +147,7 @@
           transform: translateX(25%) scaleX(0.5) !important;
           animation: none !important;
           transition: all ease-in-out 0.2s;
-          transition-delay: 0.2s;
+          transition-delay: .2s !important;
         }
 
         &:last-child {
@@ -158,6 +159,7 @@
         }
       }
     }
+
     @media (min-width: 1024px) {
       &:hover {
         .pattern-lines {
@@ -167,12 +169,14 @@
               top: -11px;
               transition: all 0.2s ease-in-out;
               animation: none;
-              transform: rotate3d(10, 10, 10, 37deg) translateX(2px)
-                translateY(-2px);
+              transform: rotate3d(10, 10, 10, 35deg) translateX(1px) translateY(-3px);
             }
 
             &:nth-child(2) {
-              transform: scaleX(0%) translateX(-50%);
+              transform: scaleX(0%) translateX(-50%) !important;
+              transform-origin: 100% 50%; 
+              transition-delay: 0s !important;
+              transition: all ease-in-out 0.2s;
               animation: none;
             }
 
@@ -181,8 +185,7 @@
               bottom: -11px;
               transition: all 0.2s ease-in-out;
               animation: none;
-              transform: rotate3d(10, 10, 10, -40deg) translateX(2px)
-                translateY(2px);
+              transform: rotate3d(14, 6, 12, -49deg) translateX(1px) translateY(3px);
             }
           }
         }
