@@ -6,8 +6,9 @@
   (click)="like($event)"
   [matBadge]="counter" 
   [matBadgeHidden]="false"
+  [disabled]="loadLikeEvn"
 >
-  <span class="flex flex-row items-center justify-center">
+  <span class="flex flex-row items-center justify-center">    
     <mat-icon>thumb_up</mat-icon>
   </span>
 </button>

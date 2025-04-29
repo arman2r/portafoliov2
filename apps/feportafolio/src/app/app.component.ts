@@ -127,9 +127,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   setLike() {
     this.likeService.getLikes().subscribe((likes: ILikes[]) => {
-      console.log('Likes:', likes);
+      //console.log('Likes:', likes);
       const countLikes = Array.isArray(likes) ? likes.length : 0;
-      console.log('Cantidad de likes:', countLikes);
+      //console.log('Cantidad de likes:', countLikes);
       this.getLikeCounter.set(countLikes);
     });
   }

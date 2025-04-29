@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { RegisterSubscriberComponent } from '../register-subscriber/registerSubscriber.component';
-import { AuthService, LikesService } from '@portafolio/shared-data';
+import { AuthService, ILikes, LikesService } from '@portafolio/shared-data';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -21,19 +21,21 @@ export class LikeButtonCounterComponent {
   private _bottomSheet = inject(MatBottomSheet);
   private _snackBarMsg = inject(MatSnackBar);
   @Input() counter = 0;
-  @Output() likeEvent = new EventEmitter<number>();  
+  @Output() likeEvent = new EventEmitter<number>();
+  loadLikeEvn = false;
 
 
   constructor(private auth: AuthService, private likeSrvice: LikesService, private viewContainerRef: ViewContainerRef) {}
 
   like(event: MouseEvent) {
-    (event.target as HTMLElement).blur();
+    this.loadLikeEvn = true;
+    //(event.target as HTMLElement).blur();
     this.openRegisterSubscriber();
     /*this.likeEvent.emit(1);
     this.counter++;*/
   }
 
-  async openRegisterSubscriber() {
+  async openRegisterSubscriber() {        
     const isAuthenticated = await this.auth.isAuthenticated();
     if (!isAuthenticated) {
       this._bottomSheet.open(RegisterSubscriberComponent, {
@@ -44,9 +46,10 @@ export class LikeButtonCounterComponent {
           if (result) {
             this.setLikeToCount();
             this.counter++;
-            this.likeEvent.emit(this.counter);
+            this.likeEvent.emit(this.counter);            
           } else {
-            console.log('No se ha registrado el like');
+            //console.log('No se ha registrado el like');
+            this.loadLikeEvn = false;
           }
         }
       });
@@ -54,6 +57,7 @@ export class LikeButtonCounterComponent {
       this.setLikeToCount();
       this.counter++;
       this.likeEvent.emit(this.counter);
+      //this.loadLikeEvn = false;
     }
   }
 
@@ -68,18 +72,25 @@ export class LikeButtonCounterComponent {
 
   setLikeToCount() {
     const fragmentUrl = this.getFragment() as string;
-    console.log('Fragmento de URL:', fragmentUrl);
+    //console.log('Fragmento de URL:', fragmentUrl);
     this.likeSrvice.createLike(fragmentUrl).subscribe({
       next: (result) => {
         if (result) {
           console.log('Operación completada:', result);
+          //this.loadLikeEvn = false;
           // Aquí puedes mostrar un mensaje de éxito al usuario
         }
       },
       error: (error) => {
-        console.error('Error en el proceso:', error);
-        this.counter--;
-        this.likeEvent.emit(this.counter);
+        //console.error('Error en el proceso:', error);
+        /*this.counter--;
+        this.likeEvent.emit(this.counter);*/
+        this.likeSrvice.getLikes().subscribe((likes: ILikes[]) => { 
+          const countLikes = Array.isArray(likes) ? likes.length : 0; 
+          this.counter = countLikes;
+          this.likeEvent.emit(this.counter);
+          this.loadLikeEvn = false;
+        });
         this._snackBarMsg.open('Gracias, ya diste like a esta sección', '🥳', {
           duration: 3000,
           horizontalPosition: 'center',
