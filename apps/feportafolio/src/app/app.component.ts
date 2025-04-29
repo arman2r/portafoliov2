@@ -17,6 +17,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { LikesService } from '@portafolio/shared-data';
 import { ILikes } from '@portafolio/shared-data'; 
+import { DownloadBtnComponent } from './components/download-button/downloadBtn.component';
 @Component({
   imports: [
     CommonModule,
@@ -28,7 +29,8 @@ import { ILikes } from '@portafolio/shared-data';
     ToggleSidenavBtnComponent,
     LikeButtonCounterComponent,
     SharedBtnComponent,
-    FooterComponent
+    FooterComponent,
+    DownloadBtnComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

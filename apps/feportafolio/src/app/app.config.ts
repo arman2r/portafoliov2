@@ -29,7 +29,7 @@ const jwtProviders = [
       config: {
         tokenGetter,
         allowedDomains: ["ingrubio.com", "localhost:4200", "localhost:3000", "https://portafolio-be.onrender.com"],
-        disallowedRoutes: [],
+        disallowedRoutes: [/\/assets\//],
       },
     }),
   ),

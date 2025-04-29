@@ -1,0 +1,31 @@
+<div class="w-full flex flex-col items-center justify-center gap-4">
+  <h5 class="mt-5">Descarga mi CV como Frontend o Fullstack</h5>
+
+  <mat-nav-list class="w-full">
+    <mat-list-item
+      class="mb-5"
+      (click)="downloadCV('frontend')"
+      [disabled]="isLoading"
+    >
+      <div matListItemMeta>
+        <mat-icon matListItemIcon>download</mat-icon>
+      </div>
+      <span matListItemTitle>Frontend developer Senior</span>
+      <span matLine>11 años de experiencia</span>
+    </mat-list-item>
+    <mat-list-item
+      class="mb-5"
+      (click)="downloadCV('fullstack')"
+      [disabled]="isLoading"
+    >
+      <div matListItemMeta>
+        <mat-icon matListItemIcon>download</mat-icon>
+      </div>
+      <span matListItemTitle>Fullstack developer Semi Senior</span>
+      <span matLine>5 años de experiencia</span>
+    </mat-list-item>
+  </mat-nav-list>
+  @if(isLoading){
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+</div>
