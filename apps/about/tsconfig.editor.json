@@ -1,6 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "../../shared-styles/src/lib/**/*.ts"],
-  "compilerOptions": {},
-  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "../../shared-styles/src/lib/**/*.spec.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
 }

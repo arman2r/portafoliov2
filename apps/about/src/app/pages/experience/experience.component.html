@@ -27,7 +27,7 @@
         [ngClass]="$index === experiences().length - 1 ? 'me-0' : 'me-0 lg:me-2'"
       >
         <div class="flex flex-col w-full items-center justify-center">
-          <h5>{{ experience.empresa }}</h5>
+          <h5>{{ experience.company }}</h5>
           <button
             mat-fab
             class="btn-step flex my-4 text-center justify-center items-center"
@@ -36,16 +36,16 @@
               'active-step': readMoreTxt() === $index
             }"
           >
-            <h4>{{ experience.inicio }}</h4>
+            <h4>{{ experience.yearStart }}</h4>
           </button>
-          <h5 class="mt-5 lg:mt-0">{{ experience.puesto }}</h5>
+          <h5 class="mt-5 lg:mt-0">{{ experience.position }}</h5>
           <div class="flex items-center text-center justify-center w-full whitespace-pre-line p-4 px-10 sm:px-36 lg:px-4 box-border">
             {{
               readMoreTxt() !== null
                 ? readMoreTxt() === $index
-                  ? experience.descripcion
-                  : experience.descripcion.slice(0, 120) + '...'
-                : experience.descripcion.slice(0, 120) + '...'
+                  ? experience.description
+                  : experience.description.slice(0, 120) + '...'
+                : experience.description.slice(0, 120) + '...'
             }}
           </div>
           <button mat-button (click)="readMore($index)">Leer más</button>

@@ -1,84 +1,22 @@
-@use '@angular/material'as mat;
-//@use '../../../../portafolio/shared-styles/src/lib/_theme_color'as theme;
-@use 'theme_color'as theme;
+@use "@angular/material"  as mat;
+@use 'theme_color'  as theme-colors;
 
-@include mat.core();
-//@include mat.all-component-themes(theme.$dark-theme);
-//@use '@angular/material/prebuilt-themes/magenta-violet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
 
-
-.mat-mdc-notch-piece.mdc-notched-outline__notch {
-    border-right: 0px !important;
-}
-
-/*
-// Configuración de tipografía y densidad compartida
-$typography-config: (plain-family: Roboto,
-    brand-family: 'Open Sans',
-    bold-weight: 900,
-    medium-weight: 500,
-    regular-weight: 300,
-);
-
-$density-config: (scale: -2);
-
-// Tema oscuro predeterminado
-$dark-theme: mat.define-theme((color: (primary: mat.$violet-palette,
-            tertiary: mat.$magenta-palette,
-            theme-type: dark,
-        ),
-        typography: $typography-config,
-        density: $density-config,
-    ));
-
-// Tema claro como alternativo
-$light-theme: mat.define-theme((color: (primary: mat.$violet-palette,
-            tertiary: mat.$magenta-palette,
-            theme-type: light,
-        ),
-        typography: $typography-config,
-        density: $density-config,
-    ));
-
-
-
-:host {
-    background-color: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
-}
-*/
-
 html {
-    @include mat.theme((color: (theme-type: light,
-                primary: theme.$primary-palette,
-                tertiary: theme.$tertiary-palette,
+    color-scheme: light dark; 
+    @include mat.theme((color: (theme-type: dark,
+                primary: theme-colors.$primary-palette,
+                tertiary: theme-colors.$tertiary-palette,
             ),
             typography: Roboto,
             density: 0,
         ));
 }
-
-/*body.dark-mode {
-    color-scheme: dark;
-    --mat-sys-background: #151316;
-    --mat-sys-on-background: #e9e0e4;
-
-    //@include mat.all-component-themes($dark-theme);
-    //@include mat.color-variants-backwards-compatibility($dark-theme);
-}*/
-
-/*body.light-mode {
-    color-scheme: light;
-      --mat-sys-background: #fcf8fa;
-    --mat-sys-on-background: #151316;
-
-    //@include mat.all-component-themes($light-theme);
-    //@include mat.color-variants-backwards-compatibility($light-theme);
-}*/
 
 html,
 body {
@@ -91,6 +29,10 @@ body {
 body {
     background: var(--mat-sys-surface);
     color: var(--mat-sys-on-surface);
+}
+
+.mat-mdc-notch-piece.mdc-notched-outline__notch {
+    border-right: 0px !important;
 }
 
 sub {
@@ -191,17 +133,6 @@ sub {
             margin-left: 105px;
         }
     }
-
-    /*@media(max-width: 1024px) {
-        .section {
-            width: calc(100% - 63px);
-            margin-left: 90px;
-
-            &.footer {
-                margin-left: 20px;
-            }
-        }
-    }*/
 
     @media(max-width:1023.9px) {
         .section {

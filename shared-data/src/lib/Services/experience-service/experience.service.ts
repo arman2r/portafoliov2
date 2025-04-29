@@ -16,7 +16,7 @@ export class ExperienceService {
 
 
   getExperiences(): Observable<IExperience[]> {
-    this.experienceUrl = `${this.apiUrl}/assets/data-mock/experience.json`;
+    this.experienceUrl = `${this.apiUrl}/experience`;
     return this.http.get<IExperience[]>(this.experienceUrl).pipe(
       catchError((error) => {
         console.error('Error loading experiences', error);

@@ -1,9 +1,10 @@
 export interface IExperience {
     id?: number;
-    empresa: string;
-    inicio: string;
-    fin: string;
-    puesto: string;
-    descripcion: string;
+    company: string;
+    position: string;    
+    description: string;
+    yearStart: string;
+    yearEnd: string;
+    createdAt?: string;
     tecnologias?: string[];
 }

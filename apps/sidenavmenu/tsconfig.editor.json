@@ -6,6 +6,5 @@
     "jest.config.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
-    "../shared-styles/src/lib"
   ]
 }

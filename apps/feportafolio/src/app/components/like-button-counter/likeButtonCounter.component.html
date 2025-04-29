@@ -1,9 +1,11 @@
-<button
-  style="transition: all 0.3s ease-in-out"
+<button 
   mat-fab
-  class="animated-border-btn outline-button lg:left-[-10px]"
+  class="outline-button lg:left-[-10px]"
   matTooltip="¿Te gustó este proyecto? Dale like!"
   matTooltipPosition="above"
+  (click)="like($event)"
+  [matBadge]="counter" 
+  [matBadgeHidden]="false"
 >
   <span class="flex flex-row items-center justify-center">
     <mat-icon>thumb_up</mat-icon>

@@ -28,9 +28,19 @@
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>Teléfono</mat-label>
           <input
-            formControlName="phoneNumber"
+            formControlName="phone"
             matInput
             placeholder="Teléfono o whatsapp"
+          />
+        </mat-form-field>
+      </div>
+      <div class="w-full md:w-1/2 md:px-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Correo</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Correo personal o Corporativo"
           />
         </mat-form-field>
       </div>
@@ -48,13 +58,13 @@
       <div class="w-full my-5 px-2">
         <mat-label class="me-4">Motivo*:</mat-label>
         <mat-radio-group formControlName="reason">
-          <mat-radio-button class="me-4" value="after"
+          <mat-radio-button class="me-4" value="Entrevista"
             >Entrevista</mat-radio-button
           >
-          <mat-radio-button class="me-4" value="before"
+          <mat-radio-button class="me-4" value="Cotizar Servicios"
             >Cotizar Servicios</mat-radio-button
           >
-          <mat-radio-button class="me-4" value="before">Otros</mat-radio-button>
+          <mat-radio-button class="me-4" value="Otros">Otros</mat-radio-button>
         </mat-radio-group>
       </div>
 
@@ -62,6 +72,7 @@
         <mat-form-field class="w-full" appearance="outline">
           <mat-label>Deje aquí su mensaje</mat-label>
           <textarea
+          formControlName="message"
             class="w-full"
             matInput
             placeholder="Ex. Me gustaria saber..."

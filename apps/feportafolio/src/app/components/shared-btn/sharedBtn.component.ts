@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,11 @@ import { BottomSheetOverviewSharedComponent } from '../bottom-sheet-shared/botto
 export class SharedBtnComponent {
   private _bottomSheet = inject(MatBottomSheet);
 
+  constructor(private viewContainerRef: ViewContainerRef) {}
+
   openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetOverviewSharedComponent);    
+    this._bottomSheet.open(BottomSheetOverviewSharedComponent, {
+      viewContainerRef: this.viewContainerRef,
+    });    
   }
 }

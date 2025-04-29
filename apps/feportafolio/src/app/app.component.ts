@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { AfterViewInit, Component, effect, inject, OnDestroy, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, effect, EnvironmentInjector, inject, OnDestroy, OnInit, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
@@ -15,6 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
+import { LikesService } from '@portafolio/shared-data';
+import { ILikes } from '@portafolio/shared-data'; 
 @Component({
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { PLATFORM_ID, Inject } from '@angular/core';
   styleUrl: './app.component.scss',
   standalone: true
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   title = inject(Title);
@@ -49,8 +51,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly _mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;
   componentMenuRef!: any;
+  getLikeCounter = signal(0);
 
-  constructor(private router: Router, private meta: Meta, @Inject(PLATFORM_ID) private platformId: object) {
+  constructor(private router: Router, private likeService: LikesService, private meta: Meta, @Inject(PLATFORM_ID) private platformId: object) {
+    effect(() => {
+      if (this.isMobile()) {
+        this.drawer?.close();
+      } else {
+        this.drawer?.open();
+      }
+    }, { injector: inject(EnvironmentInjector) });
+    
     if (isPlatformBrowser(this.platformId)) {
       const media = inject(MediaMatcher);
       this._mobileQuery = media.matchMedia('(max-width: 1023.9px)');
@@ -99,19 +110,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
             checkAndScroll();
           }
         });
-    }
-  }
-
-  ngAfterViewInit() {
-    // reactivo al cambio de resolución
-    if (this.isBrowser) {
-      effect(() => {
-        if (this.isMobile()) {
-          this.drawer?.close();
-        } else {
-          this.drawer?.open();
-        }
-      });
+      this.setLike();
     }
   }
 
@@ -123,6 +122,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this.drawer.close();
       });
     }
+  }
+
+
+  setLike() {
+    this.likeService.getLikes().subscribe((likes: ILikes[]) => {
+      console.log('Likes:', likes);
+      const countLikes = Array.isArray(likes) ? likes.length : 0;
+      console.log('Cantidad de likes:', countLikes);
+      this.getLikeCounter.set(countLikes);
+    });
   }
 
   ngOnDestroy(): void {

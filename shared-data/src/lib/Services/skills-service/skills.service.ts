@@ -20,7 +20,7 @@ export class SkillsService {
 
   getSkills(): Observable<ISkill[]> {
     const baseUrl = this.apiUrl || environment.apiUrl;
-    this.skillsUrl = `${baseUrl}/assets/data-mock/skills.json`;
+    this.skillsUrl = `${baseUrl}/skills`;
     return this.http.get<ISkill[]>(this.skillsUrl);
   }
 }

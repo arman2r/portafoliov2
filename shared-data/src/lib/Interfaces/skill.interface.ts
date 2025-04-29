@@ -1,6 +1,7 @@
 export interface ISkill {
     id?: number;
-    skill: string;
-    years: number;
-    use: string;    
+    title: string;
+    description: string;
+    workedTime: number;
+    workedTimeYears: number;
 }

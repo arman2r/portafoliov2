@@ -12,7 +12,7 @@
   >
     <div class="w-20 h-[1px] border-line absolute -right-8 md:-right-20">
       <sub class="years-text"
-        >X {{ skill.years }} {{ skill.years > 1 ? 'años' : 'año' }}</sub
+        >X {{ skill.workedTimeYears }} {{ skill.workedTimeYears > 1 ? 'años' : 'año' }}</sub
       >
     </div>
     <div class="flex flex-col items-end">
@@ -20,18 +20,18 @@
         class="animate__animated animate__fadeInUp text-2xl md:text-3xl"
         [style]="{ 'animation-delay': $index * 0.6 + 's' }"
       >
-        {{ skill.skill }}:
+        {{ skill.title }}:
       </h4>
       <p
         class="text-end animate__animated animate__fadeInUp"
         [style]="{ 'animation-delay': $index * 0.6 + 's' }"
       >
-        {{ skill.use }}
+        {{ skill.description }}
       </p>
     </div>
     <div class="image w-20 h-20 image-border">
       <span class="first-border"></span>
-      <div class="image-sprite" [ngClass]="skill.skill.toLowerCase()"></div>
+      <div class="image-sprite" [ngClass]="skill.title.toLowerCase()"></div>
     </div>
   </section>
   } @else {
@@ -41,7 +41,7 @@
   >
     <div class="w-20 h-[1px] border-line absolute -left-8 md:-left-20">
       <sub class="years-text"
-        >X {{ skill.years }} año{{ skill.years > 1 ? 's' : '' }}</sub
+        >X {{ skill.workedTimeYears }} año{{ skill.workedTimeYears > 1 ? 's' : '' }}</sub
       >
     </div>
     <div class="flex flex-col items-start">
@@ -49,13 +49,13 @@
         class="animate__animated animate__fadeInUp text-3xl"
         [style]="{ 'animation-delay': $index * 0.6 + 's' }"
       >
-        {{ skill.skill }}:
+        {{ skill.title }}:
       </h4>
       <p
         class="text-start animate__animated animate__fadeInUp"
         [style]="{ 'animation-delay': $index * 0.6 + 's' }"
       >
-        {{ skill.use }}
+        {{ skill.description }}
       </p>
     </div>
     <div class="image w-20 h-20 image-border flex flex-row-reverse">
@@ -63,7 +63,7 @@
       <div
         #imageSpinner
         class="image-sprite"
-        [ngClass]="skill.skill.toLowerCase()"
+        [ngClass]="skill.title.toLowerCase()"
         [attr.data-index]="$index"
       ></div>
     </div>

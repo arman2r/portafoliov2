@@ -1,0 +1,146 @@
+<div class="w-full flex flex-col justify-center items-center px-4">
+  <h4 class="py-5 text-center font-bold">
+    𝗖𝗼𝗻𝗳𝗶𝗿𝗺𝗮 𝘁𝘂 𝘃𝗼𝘁𝗼 𝗽𝗮𝗿𝗮 𝗲𝘀𝘁𝗲 𝗽𝗿𝗼𝘆𝗲𝗰𝘁𝗼
+  </h4>
+  <div class="cube-container">
+    <div class="cube" [ngClass]="{ 'rotate-cube': codeVerifyShow }">
+      <div class="face front">
+        <form class="w-full px-4" [formGroup]="followerRegisterForm">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Email</mat-label>
+            <input
+              formControlName="email"
+              matInput
+              placeholder="Ingrese aquí su correo"
+            />
+            <mat-icon matSuffix>outgoing_mail</mat-icon>
+          </mat-form-field>
+          @if(!sendCode && !codeVerifyShow) {
+          <button
+            type="button"
+            mat-button
+            (click)="getFollower()"
+            [disabled]="
+              !followerRegisterForm.valid || sendCode || codeVerifyShow
+            "
+            class="w-full mb-5"
+          >
+            Enviar
+          </button>
+          } @else {
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          }
+        </form>
+      </div>
+      <div class="face back">Back</div>
+      <div class="face top">Top</div>
+      <div class="face bottom">
+        <form
+          [formGroup]="codeVerifyForm"
+          class="w-full flex-wrap justify-center items-center"
+        >
+          <h5 class="text-center text-xs mb-3">
+            Ingresa el código enviado al correo
+          </h5>
+          <div class="flex w-full justify-center items-center">
+            <div
+              class="grid grid-cols-6 gap-2 w-full sm:w-4/6 lg:w-11/12 xl:w-10/12 2xl:w-9/12"
+            >
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code1"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 0)"
+                  (keydown)="onKeyDown($event, 0)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code2"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 1)"
+                  (keydown)="onKeyDown($event, 1)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code3"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 2)"
+                  (keydown)="onKeyDown($event, 2)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code4"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 3)"
+                  (keydown)="onKeyDown($event, 3)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code5"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 4)"
+                  (keydown)="onKeyDown($event, 4)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="text-center">
+                <input
+                  formControlName="code6"
+                  class="text-center"
+                  matInput
+                  #codeInput
+                  appSingleCharInput
+                  (input)="onInput($event, 5)"
+                  (keydown)="onKeyDown($event, 5)"
+                  maxlength="1"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <h5 class="text-center text-xs -mt-2 mb-1">
+            El codigo vence en {{ minutes | number : '2.0-0' }}:{{
+              seconds | number : '2.0-0'
+            }}
+            {{ minutes < 1 ? 'segundos' : 'minutos' }}
+          </h5>
+          @if(!confirmCode) {
+          <button
+            type="button"
+            mat-button
+            (click)="codeConfirm()"
+            [disabled]="!codeVerifyForm.valid || confirmCode"
+            class="w-full mb-5"
+          >
+            Enviar
+          </button>
+          } @else {
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
