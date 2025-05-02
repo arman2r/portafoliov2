@@ -5,7 +5,7 @@
       >siempre de la mano de html5, scss, js, entre otros...
     </sub>
   </div>
-  @defer (when skills()) { @for (skill of skills(); track $index;) { @if($index
+  @defer (when skills().length) { @for (skill of skills(); track $index;) { @if($index
   % 2 === 0) {
   <section
     #skillItem
@@ -74,7 +74,7 @@
   </section>
   } } } @placeholder {
   <!-- Mientras carga, muestra un spinner o mensaje -->
-  <div class="w-full flex justify-center py-10">
+  <div class="w-full flex flex-col justify-center py-10">
     <mat-progress-bar mode="query"></mat-progress-bar>
     <p class="mt-4">Cargando skills...</p>
   </div>

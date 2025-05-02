@@ -23,7 +23,7 @@
       #patternElementScroll
       class="w-full flex whitespace-nowrap overflow-auto pattern-scroller"
     >
-      @defer (when experiences()) { @for (experience of experiences(); track
+      @defer (when experiences().length) { @for (experience of experiences(); track
       $index;) {
       <div
         class="min-w-full lg:min-w-[280px] justify-start items-center relative z-5 item-carr"
@@ -60,7 +60,7 @@
       </div>
       } } @placeholder {
       <!-- Mientras carga, muestra un spinner o mensaje -->
-      <div class="w-full flex justify-center py-10">
+      <div class="w-full flex flex-col justify-center py-10">
         <mat-progress-bar mode="query"></mat-progress-bar>
         <p class="mt-4">Cargando skills...</p>
       </div>
