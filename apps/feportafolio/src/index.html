@@ -3,21 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <title>feportafolio</title>
-    <meta name="title" content="Armando Rubio, Desarrollador Frontend Sr & Fullstack SSr" />
-    <meta name="description" content="Portafolio de trabajo donde expongo mis habilidades y experiencia en el desarrollo de software" />
-    <meta name="keywords" content="Armando Rubio, Desarrollador Frontend, Fullstack, Portafolio, Angular, React, Nodejs, Nestjs, .Net Core" />
+    <meta
+      name="title"
+      content="Armando Rubio, Desarrollador Frontend Sr & Fullstack SSr"
+    />
+    <meta
+      name="description"
+      content="Portafolio de trabajo donde expongo mis habilidades y experiencia en el desarrollo de software"
+    />
+    <meta
+      name="keywords"
+      content="Armando Rubio, Desarrollador Frontend, Fullstack, Portafolio, Angular, React, Nodejs, Nestjs, .Net Core"
+    />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <meta property="og:title" content="Armando Rubio, Desarrollador Frontend Sr & Fullstack SSr" />
+    <meta
+      property="og:title"
+      content="Armando Rubio, Desarrollador Frontend Sr & Fullstack SSr"
+    />
     <meta
       property="og:description"
       content="Portafolio de trabajo donde expongo mis habilidades y experiencia en el desarrollo de software."
     />
-    <meta
-      property="og:image"
-      content="assets/portafolio-web.png"
-    />
+    <meta property="og:image" content="assets/portafolio-web.png" />
     <meta property="og:url" content="https://ingrubio.com" />
     <meta property="og:type" content="website" />
     <link
@@ -33,16 +42,45 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQJ6T4FKVE"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EQJ6T4FKVE"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('js', new Date());
 
       gtag('config', 'G-EQJ6T4FKVE');
     </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-K67KMWF6');
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body class="mat-typography dark">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-K67KMWF6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <app-root></app-root>
   </body>
 </html>
