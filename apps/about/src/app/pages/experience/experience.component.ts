@@ -1,13 +1,14 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, signal, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { IExperience, ExperienceService } from '@portafolio/shared-data';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatProgressBarModule, MatDividerModule, MatIconModule],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
@@ -16,6 +17,7 @@ export class ExperienceComponent {
   experiences = signal<IExperience[]>([]);
   readMoreTxt = signal<any>(null); // null indica que no hay elemento seleccionado  
   patternElement = viewChild<ElementRef>('patternElementScroll');
+  @Input() loading = false;
 
   constructor() {
     this.experienceService.getExperiences().subscribe(data => {

@@ -15,4 +15,5 @@ export * from './lib/Interfaces/ISubscriber.interface';
 export * from './lib/Interfaces/IContact.interface';
 export * from './lib/Services/contact-service/contact.service';
 export * from './lib/Services/donwload-file/download.service';
+export * from './lib/Services/loading-service/loading.service';
 export * from './lib/Tokens/api-url.token';

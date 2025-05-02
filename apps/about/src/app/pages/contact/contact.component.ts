@@ -1,5 +1,5 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +20,7 @@ import { ContactService } from '@portafolio/shared-data';
 export class ContactComponent {
   contactForm!: FormGroup;
   private _snackBar = inject(MatSnackBar);
+  @Input() loading = false;
 
   constructor(private fb: FormBuilder, private contactFormService: ContactService) { }
 
@@ -35,6 +36,7 @@ export class ContactComponent {
       terms: [false, [Validators.requiredTrue]],
     });
   }
+  
 
   submit() {
     console.log(this.contactForm.value);

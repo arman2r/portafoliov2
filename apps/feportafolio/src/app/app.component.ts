@@ -4,7 +4,7 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
-import { filter } from 'rxjs';
+import { delay, filter } from 'rxjs';
 import { Meta, Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ToggleSidenavBtnComponent } from "./components/toggle-sidenav-btn/toggleSidenavBtn.component";
@@ -15,7 +15,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
-import { LikesService } from '@portafolio/shared-data';
+import { LikesService, LoadingService } from '@portafolio/shared-data';
 import { ILikes } from '@portafolio/shared-data'; 
 import { DownloadBtnComponent } from './components/download-button/downloadBtn.component';
 @Component({
@@ -54,8 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly _mobileQueryListener: () => void;
   componentMenuRef!: any;
   getLikeCounter = signal(0);
+  loading = false;
 
-  constructor(private router: Router, private likeService: LikesService, private meta: Meta, @Inject(PLATFORM_ID) private platformId: object) {
+  constructor(private _loading: LoadingService, private router: Router, private likeService: LikesService, private meta: Meta, @Inject(PLATFORM_ID) private platformId: object) {
     effect(() => {
       if (this.isMobile()) {
         this.drawer?.close();
@@ -114,6 +115,17 @@ export class AppComponent implements OnInit, OnDestroy {
         });
       this.setLike();
     }
+
+    this.listenToLoading();
+  }
+
+  listenToLoading(): void {
+    this._loading.loadingSub
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.loading = loading;
+        //console.log('Loading status:', this.loading);
+      });
   }
 
   async loadRemotes(): Promise<void> {

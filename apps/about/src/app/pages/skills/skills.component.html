@@ -5,14 +5,16 @@
       >siempre de la mano de html5, scss, js, entre otros...
     </sub>
   </div>
-  @for (skill of skills(); track $index;) { @if($index % 2 === 0) {
+  @defer (when skills()) { @for (skill of skills(); track $index;) { @if($index
+  % 2 === 0) {
   <section
     #skillItem
     class="skill-item w-full flex flex-row gap-4 items-center justify-end my-8 relative right-item"
   >
     <div class="w-20 h-[1px] border-line absolute -right-8 md:-right-20">
       <sub class="years-text"
-        >X {{ skill.workedTimeYears }} {{ skill.workedTimeYears > 1 ? 'años' : 'año' }}</sub
+        >X {{ skill.workedTimeYears }}
+        {{ skill.workedTimeYears > 1 ? 'años' : 'año' }}</sub
       >
     </div>
     <div class="flex flex-col items-end">
@@ -41,7 +43,9 @@
   >
     <div class="w-20 h-[1px] border-line absolute -left-8 md:-left-20">
       <sub class="years-text"
-        >X {{ skill.workedTimeYears }} año{{ skill.workedTimeYears > 1 ? 's' : '' }}</sub
+        >X {{ skill.workedTimeYears }} año{{
+          skill.workedTimeYears > 1 ? 's' : ''
+        }}</sub
       >
     </div>
     <div class="flex flex-col items-start">
@@ -68,5 +72,19 @@
       ></div>
     </div>
   </section>
-  } }
+  } } } @placeholder {
+  <!-- Mientras carga, muestra un spinner o mensaje -->
+  <div class="w-full flex justify-center py-10">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+    <p class="mt-4">Cargando skills...</p>
+  </div>
+  } @loading (minimum 500ms) {
+  <!-- Opcional: Si la carga tarda más de 500ms, muestra esto -->
+  <div class="w-full flex justify-center py-10">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  } @error {
+  <!-- Manejo de errores si falla la carga -->
+  <p class="text-red-500">Error al cargar los skills.</p>
+  }
 </div>

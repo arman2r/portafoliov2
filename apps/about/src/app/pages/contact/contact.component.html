@@ -90,7 +90,7 @@
         <button
           mat-fab
           extended
-          [disabled]="!contactForm.valid"
+          [disabled]="!contactForm.valid || loading"
           (click)="submit()"
         >
           Enviar <mat-icon>send</mat-icon>

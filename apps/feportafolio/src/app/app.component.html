@@ -34,7 +34,7 @@
           <app-toggle-sidenav-btn
             (toggleSidenavEvent)="drawer.toggle()"
           ></app-toggle-sidenav-btn>
-          <app-like-button-counter [counter]="getLikeCounter()" (likeEvent)="setLike()"></app-like-button-counter>
+          <app-like-button-counter [isLoading]="loading" [counter]="getLikeCounter()" (likeEvent)="setLike()"></app-like-button-counter>
         </div>
 
         <div class="flex flex-row w-full lg:w-auto lg:h-full">

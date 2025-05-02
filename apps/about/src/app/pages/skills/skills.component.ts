@@ -1,12 +1,13 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID, QueryList, signal, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM_ID, QueryList, signal, ViewChildren } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { ISkill, SkillsService } from '@portafolio/shared-data'; // reemplaza "myorg" por tu scope Nx
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule, MatDividerModule],
+  imports: [CommonModule, MatDividerModule, MatProgressBarModule],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
@@ -15,6 +16,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
   skills = signal<ISkill[]>([]);
   @ViewChildren('skillItem') skillElements!: QueryList<ElementRef>;
   private observer!: IntersectionObserver;
+  @Input() loading = false;
 
   constructor(private skillsService: SkillsService, private ref: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: object) { }
 

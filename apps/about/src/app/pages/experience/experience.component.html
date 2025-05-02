@@ -1,5 +1,7 @@
 <div class="flex flex-col w-full px-8 lg:px-[5rem] p-8 lg:pb-[5rem]">
-  <div class="flex flex-col lg:items-start text-center lg:text-start mt-10 mb-0 lg:my-8 pt-10">
+  <div
+    class="flex flex-col lg:items-start text-center lg:text-start mt-10 mb-0 lg:my-8 pt-10"
+  >
     <h3 class="text-4xl lg:text-6xl">Experiencia laboral:</h3>
     <sub class="text-2xl">Mi recorrido en 11 años de trabajo</sub>
   </div>
@@ -21,10 +23,13 @@
       #patternElementScroll
       class="w-full flex whitespace-nowrap overflow-auto pattern-scroller"
     >
-      @for (experience of experiences(); track $index;) {
+      @defer (when experiences()) { @for (experience of experiences(); track
+      $index;) {
       <div
         class="min-w-full lg:min-w-[280px] justify-start items-center relative z-5 item-carr"
-        [ngClass]="$index === experiences().length - 1 ? 'me-0' : 'me-0 lg:me-2'"
+        [ngClass]="
+          $index === experiences().length - 1 ? 'me-0' : 'me-0 lg:me-2'
+        "
       >
         <div class="flex flex-col w-full items-center justify-center">
           <h5>{{ experience.company }}</h5>
@@ -39,7 +44,9 @@
             <h4>{{ experience.yearStart }}</h4>
           </button>
           <h5 class="mt-5 lg:mt-0">{{ experience.position }}</h5>
-          <div class="flex items-center text-center justify-center w-full whitespace-pre-line p-4 px-10 sm:px-36 lg:px-4 box-border">
+          <div
+            class="flex items-center text-center justify-center w-full whitespace-pre-line p-4 px-10 sm:px-36 lg:px-4 box-border"
+          >
             {{
               readMoreTxt() !== null
                 ? readMoreTxt() === $index
@@ -51,6 +58,20 @@
           <button mat-button (click)="readMore($index)">Leer más</button>
         </div>
       </div>
+      } } @placeholder {
+      <!-- Mientras carga, muestra un spinner o mensaje -->
+      <div class="w-full flex justify-center py-10">
+        <mat-progress-bar mode="query"></mat-progress-bar>
+        <p class="mt-4">Cargando skills...</p>
+      </div>
+      } @loading (minimum 500ms) {
+      <!-- Opcional: Si la carga tarda más de 500ms, muestra esto -->
+      <div class="w-full flex justify-center py-10">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      } @error {
+      <!-- Manejo de errores si falla la carga -->
+      <p class="text-red-500">Error al cargar los skills.</p>
       }
     </div>
   </div>

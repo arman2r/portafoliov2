@@ -4,24 +4,28 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth-service/auth.service';
 import { isPlatformBrowser } from '@angular/common';
+import { LoadingService } from './loading-service/loading.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
+    private _loading: LoadingService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('Interceptor triggered for URL:', request.url);
+    //console.log('Interceptor triggered for URL:', request.url);
+    this._loading.setLoading(true, request.url);
     // Solo procesar en el cliente (browser)
     if (isPlatformBrowser(this.platformId)) {
       console.log('Running in browser context');
@@ -41,13 +45,20 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 && isPlatformBrowser(this.platformId)) {
-          this.authService.clearAuth();
-          this.router.navigate(['/login']);
-        }
-        return throwError(() => error);
-      })
-    );
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401 && isPlatformBrowser(this.platformId)) {
+            this._loading.setLoading(false, request.url);
+            this.authService.clearAuth();
+            this.router.navigate(['/login']);
+          }
+          return throwError(() => error);
+        }),
+        map<HttpEvent<any>, any>((evt: HttpEvent<any>) => {
+          if (evt instanceof HttpResponse) {
+            this._loading.setLoading(false, request.url);
+          }
+          return evt;
+        })
+      );
   }
 }

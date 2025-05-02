@@ -8,10 +8,11 @@ import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-s
 import { RegisterSubscriberComponent } from '../register-subscriber/registerSubscriber.component';
 import { AuthService, ILikes, LikesService } from '@portafolio/shared-data';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-like-button-counter',
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, MatBadgeModule, MatBottomSheetModule],
+  imports: [CommonModule, MatButtonModule, MatProgressSpinnerModule, MatIconModule, MatTooltipModule, MatBadgeModule, MatBottomSheetModule],
   templateUrl: './likeButtonCounter.component.html',
   styleUrl: './likeButtonCounter.component.css',
   standalone: true,
@@ -22,6 +23,7 @@ export class LikeButtonCounterComponent {
   private _snackBarMsg = inject(MatSnackBar);
   @Input() counter = 0;
   @Output() likeEvent = new EventEmitter<number>();
+  @Input() isLoading = false;
   loadLikeEvn = false;
 
 
