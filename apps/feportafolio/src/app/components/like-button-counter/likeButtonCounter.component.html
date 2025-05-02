@@ -6,7 +6,7 @@
   (click)="like($event)"
   [matBadge]="counter"
   [matBadgeHidden]="false"
-  [disabled]="loadLikeEvn"
+  [disabled]="loadLikeEvn || isLoading"
 >
   <span class="flex flex-row items-center justify-center">
     @if (isLoading) {
